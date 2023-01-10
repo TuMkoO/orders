@@ -1,0 +1,164 @@
+@import "vars";
+@import "libs";
+@import "fonts";
+@import "global";
+
+/*----------------------------------- */
+/* Header
+------------------------------------- */
+.logo {
+  text-decoration: none;
+  color: #fff;
+  white-space: pre-wrap;
+  &:hover {
+    color: #fff;
+  }
+}
+
+/*----------------------------------- */
+/* Left Navbar
+------------------------------------- */
+.q-item.q-router-link--active,
+.q-item--active {
+  font-weight: 700;
+}
+/*----------------------------------- */
+/* Auth
+------------------------------------- */
+.auth-wrapper {
+  margin-bottom: -79px;
+  padding-bottom: 79px;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+.auth-card {
+  // width: 400px;
+  width: 100%;
+}
+.auth-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.auth-form-wrapper {
+  // max-width: 400px;
+}
+
+/*----------------------------------- */
+/* Message
+------------------------------------- */
+.message {
+  width: max-content;
+}
+
+/*----------------------------------- */
+/* Document
+------------------------------------- */
+// .document-wrapper {
+//   overflow-x: auto;
+// }
+.document {
+  font-family: "Times New Roman";
+  min-width: 700px;
+
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .text-indent {
+    text-indent: 30px;
+  }
+
+  .bordered {
+    border: 1px solid #000;
+    padding: 0 10px;
+  }
+
+  .symbol-bordered {
+    border: 1px solid #000;
+    width: 19px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    margin-left: -1px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  ol {
+    margin: 0;
+    padding: 0 0 0 15px;
+  }
+
+  table {
+    thead {
+      font-weight: 700;
+    }
+    border-spacing: 0;
+    width: 100%;
+    border-collapse: collapse;
+    td {
+      // border: 1px solid #dee2e6;
+      border: 1px solid #000;
+    }
+  }
+
+  .single-line {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: #000;
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  .bordered-bottom {
+    border-bottom: 1px solid #000;
+  }
+
+  .line-dashed {
+    border-bottom: 1px dashed #000;
+  }
+}
+
+/*----------------------------------- */
+/* Table
+------------------------------------- */
+.table-nav {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3000;
+}
+
+/*----------------------------------- */
+/* Home
+------------------------------------- */
+
+// .notifications {
+//   .q-table__grid-content {
+//     .q-table__grid-item {
+//       width: 100% !important;
+
+//       .q-table__grid-item-card {
+//         display: flex;
+//         justify-content: space-between;
+//       }
+//     }
+//   }
+// }
+
+@import "media";

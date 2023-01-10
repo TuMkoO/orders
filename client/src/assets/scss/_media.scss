@@ -1,0 +1,109 @@
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 1399.98px) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+}
+
+// custom
+@media (max-width: 867px) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .logo {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 837px) {
+}
+@media (min-width: 768px) {
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .logo {
+    font-size: 14px;
+  }
+}
+
+//
+@media (max-width: 480px) {
+  .auth-card-wrapper {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .auth-card {
+    width: auto !important;
+    margin: 0 10px;
+    .q-card__section--vert {
+      padding: 0;
+    }
+  }
+  .logo {
+    font-size: 14px;
+  }
+}
+
+//
+@media (max-width: 414px) {
+}
+
+//
+@media (max-width: 360px) {
+  .auth-logo img {
+    max-width: 150px;
+  }
+}
+
+//
+@media (max-width: 320px) {
+}
+
+@media print {
+  .print {
+    display: block !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+
+  .print-mt-0 {
+    margin-top: 0;
+  }
+
+  header,
+  footer,
+  aside,
+  h1,
+  .q-tabs {
+    display: none !important;
+  }
+
+  .q-page-container,
+  .q-page {
+    padding: 0 !important;
+  }
+
+  .q-card {
+    box-shadow: none;
+  }
+
+  .document {
+    min-width: auto;
+  }
+
+  .table-nav,
+  #system-message {
+    visibility: hidden !important;
+  }
+  // #print-content {
+  //   background: transparent;
+  // }
+}

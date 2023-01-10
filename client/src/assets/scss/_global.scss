@@ -1,0 +1,75 @@
+/*----------------------------------- */
+/* Basic settings
+------------------------------------- */
+
+.w-auto {
+  width: auto !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.h-100vh {
+  height: 100vh !important;
+}
+.mh-100vh {
+  min-height: 100vh !important;
+}
+
+.print {
+  display: none !important;
+}
+.no-print {
+  display: block !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/*----------------------------------- */
+/* Typography
+------------------------------------- */
+h1 {
+  font-size: 26px;
+  line-height: 26px;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.fs-print-8pt {
+  font-size: 0.7rem !important;
+  line-height: 0.7rem !important;
+}
+.fs-print-9pt {
+  font-size: 0.75rem !important;
+  line-height: 0.75rem !important;
+}
+.fs-print-10pt {
+  font-size: 0.85rem !important;
+  line-height: 0.85rem !important;
+}
+.fs-print-11pt {
+  font-size: 0.9rem !important;
+  line-height: 0.9rem !important;
+}
+.fs-print-12pt {
+  font-size: 1rem !important;
+  line-height: 1rem !important;
+}
+.fs-print-14pt {
+  font-size: 1.2rem !important;
+  line-height: 1.2rem !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
