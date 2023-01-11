@@ -194,7 +194,7 @@ import AppLoader from "../components/ui/AppLoader.vue";
 import AppPage from "../components/ui/AppPage.vue";
 
 const metaData = {
-  title: "Университетские технологии",
+  title: "Новые технологии",
   titleTemplate: (title) => `${title}`,
 };
 

@@ -98,7 +98,7 @@ import SettingsConfigurable from "../components/settings/SettingsConfigurable.vu
 
 const metaData = {
   title: "Настройки",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

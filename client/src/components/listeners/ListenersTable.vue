@@ -52,25 +52,7 @@
             </q-tr>
           </template>
 
-          <!-- <template v-slot:body-cell-fullName="props">
-          <q-td :props="props">
-            <div class="text-responsive">
-              {{ props.row.fullName }}
-            </div>
-          </q-td>
-        </template>
-        <template v-slot:body-cell-shortName="props">
-          <q-td :props="props">
-            <div class="text-responsive">
-              {{ props.row.shortName }}
-            </div>
-          </q-td>
-        </template> -->
-
           <template v-slot:body-cell-company="props">
-            <!-- <q-td :props="props">
-            {{ props.row.ownerUser }}
-          </q-td> -->
             <q-td :props="props">
               {{
                 props.row.ownerUser == user.id
@@ -246,11 +228,33 @@ export default {
     //store
     const store = useStore();
 
+    const user = computed(() => store.getters["auth/user"]);
+    const users = computed(() => store.getters["auth/users"]);
+    const access = ref(false);
+
     const search = ref("");
     const rows = computed(() => store.getters["listener/listeners"]);
     const filteredRows = computed(() =>
       store.getters["listener/listeners"].filter((listener) => {
-        if (search.value) {
+        if (search.value && !access.value) {
+          return (
+            listener.firstName
+              .toLowerCase()
+              .includes(search.value.toLowerCase()) ||
+            listener.secondName
+              .toLowerCase()
+              .includes(search.value.toLowerCase()) ||
+            listener.lastName
+              .toLowerCase()
+              .includes(search.value.toLowerCase()) ||
+            user.value.companyShortName
+              .toLowerCase()
+              .includes(search.value.toLowerCase()) ||
+            user.value.companyFullName
+              .toLowerCase()
+              .includes(search.value.toLowerCase())
+          );
+        } else if (search.value && access.value) {
           return (
             listener.firstName
               .toLowerCase()
@@ -286,10 +290,6 @@ export default {
     const modalType = ref("");
     const modalTitle = ref("");
     const currentListener = ref();
-
-    const user = computed(() => store.getters["auth/user"]);
-    const users = computed(() => store.getters["auth/users"]);
-    const access = ref(false);
 
     onMounted(async () => {
       // loadListeners();
@@ -374,8 +374,6 @@ export default {
       loadListeners();
 
       closeModal();
-
-      //обновить таблицу
     };
 
     return {

@@ -145,7 +145,7 @@ export default {
 
         if (id) {
           // console.log("certificate id", id);
-          const data = await $api.put(`api/order-training/${id}`, dataload);
+          const data = await $api.put(`/api/order-training/${id}`, dataload);
 
           dispatch(
             "setMessage",

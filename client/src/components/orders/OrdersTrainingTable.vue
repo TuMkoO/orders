@@ -23,16 +23,11 @@
           !user.companyLegalAddressCity ||
           !user.companyLegalAddressCode ||
           !user.companyLegalAddressHouse ||
-          !user.companyLegalAddressRoom ||
           !user.companyLegalAddressStreet ||
-          !user.companyLegalAddressTownship ||
           !user.companyMailAddressCity ||
           !user.companyMailAddressCode ||
           !user.companyMailAddressHouse ||
-          !user.companyMailAddressRoom ||
           !user.companyMailAddressStreet ||
-          !user.companyMailAddressTownship ||
-          !user.companyOkpo ||
           !user.companyOwnershipType ||
           !user.companyPayment ||
           !user.companyPhone ||

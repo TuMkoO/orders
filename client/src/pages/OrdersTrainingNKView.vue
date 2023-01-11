@@ -18,7 +18,7 @@ import OrdersTrainingTable from "../components/orders/OrdersTrainingTable.vue";
 
 const metaData = {
   title: "Повышение квалификации НК",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

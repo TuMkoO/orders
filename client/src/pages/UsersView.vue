@@ -77,7 +77,7 @@ import UsersTable from "../components/users/UsersTable.vue";
 
 const metaData = {
   title: "Управление пользователями",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

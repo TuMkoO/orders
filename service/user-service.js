@@ -159,34 +159,34 @@ class UserService {
     return userDto;
   }
 
-  async updateRequisites(
-    id,
-    companyBank,
-    companyPayment,
-    companyInn,
-    companyOkpo,
-    companyBik
-  ) {
-    const requisites = await User.findByIdAndUpdate(
-      id,
-      {
-        companyBank,
-        companyPayment,
-        companyInn,
-        companyOkpo,
-        companyBik,
-      },
-      { new: true }
-    );
+  // async updateRequisites(
+  //   id,
+  //   companyBank,
+  //   companyPayment,
+  //   companyInn,
+  //   companyOkpo,
+  //   companyBik
+  // ) {
+  //   const requisites = await User.findByIdAndUpdate(
+  //     id,
+  //     {
+  //       companyBank,
+  //       companyPayment,
+  //       companyInn,
+  //       companyOkpo,
+  //       companyBik,
+  //     },
+  //     { new: true }
+  //   );
 
-    return {
-      companyBank: requisites.companyBank,
-      companyPayment: requisites.companyPayment,
-      companyInn: requisites.companyInn,
-      companyOkpo: requisites.companyOkpo,
-      companyBik: requisites.companyBik,
-    };
-  }
+  //   return {
+  //     companyBank: requisites.companyBank,
+  //     companyPayment: requisites.companyPayment,
+  //     companyInn: requisites.companyInn,
+  //     companyOkpo: requisites.companyOkpo,
+  //     companyBik: requisites.companyBik,
+  //   };
+  // }
 
   async updatePassword(id, oldPassword, newPassword) {
     // console.log("updatePassword === ", id, oldPassword, newPassword);

@@ -27,12 +27,12 @@ router.post(
   authMiddleware,
   userController.update
 );
-router.post(
-  "/update-requisites",
-  body("id").isLength({ min: 3 }),
-  authMiddleware,
-  userController.updateRequisites
-);
+// router.post(
+//   "/update-requisites",
+//   body("id").isLength({ min: 3 }),
+//   authMiddleware,
+//   userController.updateRequisites
+// );
 router.post(
   "/update-password",
   authMiddleware,

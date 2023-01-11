@@ -17,7 +17,7 @@ import ListenersTable from "../components/listeners/ListenersTable.vue";
 
 const metaData = {
   title: "Слушатели",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

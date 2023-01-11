@@ -290,7 +290,7 @@ import { useMeta } from "quasar";
 
 const metaData = {
   title: "Политика обработки персональных данных",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

@@ -147,7 +147,7 @@ export default {
 
     async loadUsers({ commit, dispatch }) {
       try {
-        const { data } = await $api.get("api/auth/users", {
+        const { data } = await $api.get("/api/auth/users", {
           withCredentials: true,
         });
 
@@ -199,7 +199,7 @@ export default {
 
     async loadUserById({ commit, dispatch }, id) {
       try {
-        const { data } = await $api.get(`api/auth/users/${id}`, {
+        const { data } = await $api.get(`/api/auth/users/${id}`, {
           withCredentials: true,
         });
 
@@ -271,7 +271,7 @@ export default {
       try {
         // console.log("payload: ", payload);
         const { data } = await $api.post(
-          "api/auth/update",
+          "/api/auth/update",
           {
             ...payload,
           },
@@ -299,40 +299,40 @@ export default {
         throw e;
       }
     },
-    async updateRequisites({ commit, dispatch }, payload) {
-      try {
-        // console.log("payload: ", payload);
-        const { data } = await $api.post(
-          "api/auth/update-requisites",
-          {
-            ...payload,
-          },
-          { withCredentials: true }
-        );
+    // async updateRequisites({ commit, dispatch }, payload) {
+    //   try {
+    //     // console.log("payload: ", payload);
+    //     const { data } = await $api.post(
+    //       "api/auth/update-requisites",
+    //       {
+    //         ...payload,
+    //       },
+    //       { withCredentials: true }
+    //     );
 
-        dispatch(
-          "setMessage",
-          {
-            value: `Изменения реквизитов успешно внесены`,
-            type: "primary",
-          },
-          { root: true }
-        );
+    //     dispatch(
+    //       "setMessage",
+    //       {
+    //         value: `Изменения реквизитов успешно внесены`,
+    //         type: "primary",
+    //       },
+    //       { root: true }
+    //     );
 
-        return data;
-      } catch (e) {
-        dispatch(
-          "setMessage",
-          {
-            value: e,
-            type: "danger",
-          },
-          { root: true }
-        );
+    //     return data;
+    //   } catch (e) {
+    //     dispatch(
+    //       "setMessage",
+    //       {
+    //         value: e,
+    //         type: "danger",
+    //       },
+    //       { root: true }
+    //     );
 
-        throw e;
-      }
-    },
+    //     throw e;
+    //   }
+    // },
 
     async updatePassword({ dispatch }, payload) {
       try {

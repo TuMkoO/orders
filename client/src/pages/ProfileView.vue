@@ -118,7 +118,7 @@ import UsersForm from "../components/users/UsersForm.vue";
 
 const metaData = {
   title: "Личный кабинет",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

@@ -146,33 +146,33 @@ class UserController {
       next(e);
     }
   }
-  async updateRequisites(req, res) {
-    try {
-      // console.log("req.body :::= ", req.body);
-      const {
-        id,
-        companyBank,
-        companyPayment,
-        companyInn,
-        companyOkpo,
-        companyBik,
-      } = req.body;
+  // async updateRequisites(req, res) {
+  //   try {
+  //     // console.log("req.body :::= ", req.body);
+  //     const {
+  //       id,
+  //       companyBank,
+  //       companyPayment,
+  //       companyInn,
+  //       companyOkpo,
+  //       companyBik,
+  //     } = req.body;
 
-      const userData = await userService.updateRequisites(
-        id,
-        companyBank,
-        companyPayment,
-        companyInn,
-        companyOkpo,
-        companyBik
-      );
+  //     const userData = await userService.updateRequisites(
+  //       id,
+  //       companyBank,
+  //       companyPayment,
+  //       companyInn,
+  //       companyOkpo,
+  //       companyBik
+  //     );
 
-      return res.json(userData);
-    } catch (e) {
-      // console.log("e===", e);
-      next(e);
-    }
-  }
+  //     return res.json(userData);
+  //   } catch (e) {
+  //     // console.log("e===", e);
+  //     next(e);
+  //   }
+  // }
 
   async updatePassword(req, res) {
     try {

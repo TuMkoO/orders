@@ -40,7 +40,7 @@ router.post(
 router.get(
   "/",
   authMiddleware,
-  roleMiddleware(["admin", "god"]),
+  roleMiddleware(["admin", "god", "user"]),
   async (req, res) => {
     try {
       const certificationSystem = await CertificationSystem.find();

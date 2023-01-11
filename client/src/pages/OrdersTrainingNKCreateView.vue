@@ -1,57 +1,12 @@
 <template>
   <app-page title="Создание заявки на повышение квалификации НК">
     <div class="q-gutter-y-md">
-      <q-card
-        v-if="
-          (user.email &&
-            user.firstName &&
-            user.secondName &&
-            user.lastName &&
-            user.post &&
-            user.phone &&
-            user.companyFullName &&
-            user.companyShortName &&
-            user.companyOwnershipType &&
-            user.companyLegalAddressCode &&
-            user.companyLegalAddressCity &&
-            user.companyLegalAddressStreet &&
-            user.companyLegalAddressHouse &&
-            user.companyMailAddressCode &&
-            user.companyMailAddressCity &&
-            user.companyMailAddressStreet &&
-            user.companyMailAddressHouse &&
-            user.companyMailAddressRoom &&
-            user.companyPhone &&
-            user.companyEmail &&
-            user.companyBank &&
-            user.companyPayment &&
-            user.companyInn &&
-            user.companyOkpo &&
-            user.companyBik &&
-            user.companyDirFirstName &&
-            user.companyDirSecondName &&
-            user.companyDirLastName &&
-            user.companyDirPost &&
-            user.companyGrounds) ||
-          access
-        "
-      >
+      <q-card>
         <div class="q-pa-lg">
           <div v-if="loading"><AppLoader /></div>
           <OrdersTrainingForm v-else orderType="nk" />
         </div>
       </q-card>
-      <div v-else>
-        <p class="text-center">Регистрационная карточка не заполнена!</p>
-        <div class="text-center">
-          <q-btn
-            label="Заполнить"
-            type="button"
-            color="primary"
-            to="/profile"
-          />
-        </div>
-      </div>
     </div>
   </app-page>
 </template>
@@ -66,7 +21,7 @@ import OrdersTrainingForm from "../components/orders/OrdersTrainingForm.vue";
 
 const metaData = {
   title: "Создание заявки",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

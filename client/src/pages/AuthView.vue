@@ -60,7 +60,7 @@ import { useMeta } from "quasar";
 
 const metaData = {
   title: "Авторизация",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {

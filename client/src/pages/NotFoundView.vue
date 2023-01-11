@@ -18,7 +18,7 @@ import { useMeta } from "quasar";
 
 const metaData = {
   title: "Страница не найдена",
-  titleTemplate: (title) => `${title} | Университетские технологии`,
+  titleTemplate: (title) => `${title} | Новые технологии`,
 };
 
 export default {
