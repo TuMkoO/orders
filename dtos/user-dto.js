@@ -36,10 +36,8 @@ module.exports = class UserDto {
   companyDirLastName;
   companyDirPost;
   companyGrounds;
-  // isActivated;
 
   constructor(model) {
-    // console.log("model:::", model);
     this.email = model.email;
     this.firstName = model.firstName;
     this.secondName = model.secondName;

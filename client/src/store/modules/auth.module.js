@@ -299,40 +299,6 @@ export default {
         throw e;
       }
     },
-    // async updateRequisites({ commit, dispatch }, payload) {
-    //   try {
-    //     // console.log("payload: ", payload);
-    //     const { data } = await $api.post(
-    //       "api/auth/update-requisites",
-    //       {
-    //         ...payload,
-    //       },
-    //       { withCredentials: true }
-    //     );
-
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: `Изменения реквизитов успешно внесены`,
-    //         type: "primary",
-    //       },
-    //       { root: true }
-    //     );
-
-    //     return data;
-    //   } catch (e) {
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: e,
-    //         type: "danger",
-    //       },
-    //       { root: true }
-    //     );
-
-    //     throw e;
-    //   }
-    // },
 
     async updatePassword({ dispatch }, payload) {
       try {
@@ -416,52 +382,6 @@ export default {
         throw e;
       }
     },
-
-    // async updateCard({ commit, dispatch }, payload) {
-    //   try {
-    //     const userId = store.getters["auth/user"].id;
-
-    //     const dataload = {
-    //       id: userId,
-    //       card: payload,
-    //     };
-
-    //     const { data } = await $api.post(
-    //       "api/auth/update-card",
-    //       {
-    //         ...dataload,
-    //       },
-    //       { withCredentials: true }
-    //     );
-
-    //     // console.log("updateCard==", data);
-
-    //     if (data) {
-    //       commit("setUser", data);
-    //     }
-
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: "Регистрационная карточка успешно обновлена",
-    //         type: "primary",
-    //       },
-    //       { root: true }
-    //     );
-    //   } catch (e) {
-    //     // console.log(e);
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: e,
-    //         type: "danger",
-    //       },
-    //       { root: true }
-    //     );
-
-    //     throw e;
-    //   }
-    // },
 
     async remove({ commit, dispatch }, id) {
       try {

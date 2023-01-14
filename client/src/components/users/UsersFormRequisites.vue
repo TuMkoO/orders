@@ -58,7 +58,7 @@
       </div>
     </q-card-section>
     <q-card-actions align="right" class="bg-white">
-      <q-btn flat class="text-primary" type="submit" label="Сохранить" />
+      <q-btn flat class="text-primary" type="submit" label="Применить" />
       <q-btn flat class="text-red" label="Отмена" v-close-popup />
     </q-card-actions>
   </q-form>
@@ -66,8 +66,6 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
-import { useStore } from "vuex";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 
@@ -77,19 +75,25 @@ export default {
   },
   emits: ["success"],
   setup(props, { emit }) {
-    const store = useStore();
-
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
       // console.log("props.requisites: ", props.requisites);
 
-      if (props.requisites) {
+      if (
+        props.requisites.companyBank &&
+        props.requisites.companyPayment &&
+        props.requisites.companyInn &&
+        props.requisites.companyBik
+      ) {
         companyBank.value = props.requisites.companyBank;
         companyPayment.value = props.requisites.companyPayment;
         companyInn.value = props.requisites.companyInn;
-        companyOkpo.value = props.requisites.companyOkpo;
         companyBik.value = props.requisites.companyBik;
+      }
+
+      if (props.requisites.companyOkpo) {
+        companyOkpo.value = props.requisites.companyOkpo;
       }
     });
 
@@ -116,8 +120,6 @@ export default {
     const { value: companyOkpo, errorMessage: cOkpoError } = useField(
       "companyOkpo",
       yup.string().trim()
-      // .length(8, "Длина не может быть меньше 8 символов")
-      // .min(8, "Длина не может быть меньше 8 символов")
     );
     const { value: companyBik, errorMessage: cBikError } = useField(
       "companyBik",
@@ -129,16 +131,7 @@ export default {
     );
 
     const onSubmit = handleSubmit(async (values) => {
-      // console.log(values);
-
-      const requisites = await store.dispatch("auth/updateRequisites", {
-        ...values,
-        id: props.requisites.id,
-      });
-
-      resetForm();
-
-      emit("success", requisites);
+      emit("success", values);
     });
 
     return {

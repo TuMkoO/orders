@@ -342,67 +342,6 @@
                     />
                   </div>
 
-                  <!-- <div class="col-12">
-                    <q-input
-                      v-model="companyBank"
-                      label="Банк"
-                      :error="!!cBankError"
-                      :error-message="cBankError"
-                      dense
-                    />
-                  </div> -->
-                  <!-- <div
-                    class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
-                  >
-                    <q-input
-                      v-model="companyPayment"
-                      label="Расчетый счёт"
-                      type="text"
-                      mask="####################"
-                      :error="!!cPayError"
-                      :error-message="cPayError"
-                      dense
-                    />
-                  </div>
-                  <div
-                    class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
-                  >
-                    <q-input
-                      v-model="companyInn"
-                      label="ИНН"
-                      type="text"
-                      mask="########"
-                      :error="!!cInnError"
-                      :error-message="cInnError"
-                      dense
-                    />
-                  </div>
-                  <div
-                    class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
-                  >
-                    <q-input
-                      v-model="companyOkpo"
-                      label="ОКПО"
-                      type="text"
-                      mask="########"
-                      :error="!!cOkpoError"
-                      :error-message="cOkpoError"
-                      dense
-                    />
-                  </div>
-                  <div
-                    class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
-                  >
-                    <q-input
-                      v-model="companyBik"
-                      label="БИК"
-                      type="text"
-                      mask="#########"
-                      :error="!!cBikError"
-                      :error-message="cBikError"
-                      dense
-                    />
-                  </div> -->
                   <div
                     class="col-12 col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4"
                   >
@@ -593,13 +532,10 @@
                 <q-btn flat round dense icon="close" v-close-popup />
               </q-toolbar>
 
-              <!-- <q-card-section>
-                <div class="text-h6">Изменить реквизиты</div>
-              </q-card-section> -->
               <div>
                 <UsersFormRequisites
                   :requisites="currentUserRequisites"
-                  @success="closeThirdDialog"
+                  @success="updateRequisites"
                 />
               </div>
             </q-card>
@@ -656,11 +592,11 @@ export default {
     const newPassword = ref("");
     const newPasswordInput = ref(null);
 
-    const companyBank = ref("");
-    const companyPayment = ref("");
-    const companyInn = ref("");
-    const companyOkpo = ref("");
-    const companyBik = ref("");
+    // const companyBank = ref("");
+    // const companyPayment = ref("");
+    // const companyInn = ref("");
+    // const companyOkpo = ref("");
+    // const companyBik = ref("");
 
     const secondDialogRef = ref(null);
     const thirdDialogRef = ref(null);
@@ -979,6 +915,27 @@ export default {
         )
     );
 
+    const { value: companyBank, errorMessage: cBankError } = useField(
+      "companyBank",
+      yup.string().trim()
+    );
+    const { value: companyPayment, errorMessage: cPayError } = useField(
+      "companyPayment",
+      yup.string().trim()
+    );
+    const { value: companyInn, errorMessage: cInnError } = useField(
+      "companyInn",
+      yup.string().trim()
+    );
+    const { value: companyOkpo, errorMessage: cOkpoError } = useField(
+      "companyOkpo",
+      yup.string().trim()
+    );
+    const { value: companyBik, errorMessage: cBikError } = useField(
+      "companyBik",
+      yup.string().trim()
+    );
+
     watch(phoneInput, (newVal, oldVal) => {
       phone.value = newVal;
 
@@ -1084,7 +1041,6 @@ export default {
 
     function generatePassword(form) {
       let pass = "";
-      // let symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!№;%:?*()_+=";
       let symbols =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       for (let i = 0; i < 10; i++) {
@@ -1098,24 +1054,6 @@ export default {
         isNewPwd.value = false;
       }
     }
-
-    // function filterFn(val, update) {
-    //   update(() => {
-    //     if (val === "") {
-    //       update(() => {
-    //         companyOptions.value = companyOptionsData.value;
-    //       });
-    //       return;
-    //     } else {
-    //       const needle = val.toLowerCase();
-    //       companyOptions.value = companyOptionsData.value.filter(
-    //         (v) =>
-    //           v.label.toLowerCase().indexOf(needle) > -1 ||
-    //           v.description.toLowerCase().indexOf(needle) > -1
-    //       );
-    //     }
-    //   });
-    // }
 
     //Обработка ошибок формы при регистрации
     async function onInvalidSubmit({ values, errors, results }) {
@@ -1161,6 +1099,11 @@ export default {
           !errors.lastName &&
           !errors.post &&
           !errors.phone &&
+          !errors.companyBank &&
+          !errors.companyBik &&
+          !errors.companyOkpo &&
+          !errors.companyPayment &&
+          !errors.companyInn &&
           !errors.companyFullName &&
           !errors.companyShortName &&
           !errors.companyOwnershipType &&
@@ -1188,12 +1131,14 @@ export default {
             // console.log("currentUser.value.id", currentUser.value.id);
             // console.log("props.user.id", props.user.id);
             // console.log("props.user._id", props.user._id);
+
+            //Обновление личного профиля
             await store.dispatch("auth/update", {
               ...values,
               id: props.user.id || props.user._id,
             });
           } else {
-            // console.log("2");
+            //Обновление профиля по id
             await store.dispatch("auth/updateById", {
               ...values,
               id: props.user._id,
@@ -1208,11 +1153,6 @@ export default {
             value: "Данные пользователя успешно обновлены",
             type: "primary",
           });
-
-          //вернуться на предыдущую страницу
-          // if (route.fullPath == "/profile") {
-          //   router.go(-1);
-          // }
         } else if (
           props.submitType == "update" &&
           (errors.password ||
@@ -1279,7 +1219,7 @@ export default {
         secondDialogRef.value.hide();
       }
     };
-    const closeThirdDialog = (values) => {
+    const updateRequisites = (values) => {
       // console.log(values);
 
       companyBank.value = values.companyBank;
@@ -1287,6 +1227,15 @@ export default {
       companyInn.value = values.companyInn;
       companyOkpo.value = values.companyOkpo;
       companyBik.value = values.companyBik;
+
+      currentUserRequisites.value = {
+        id: props.user._id || props.user.id,
+        companyBank: values.companyBank,
+        companyPayment: values.companyPayment,
+        companyInn: values.companyInn,
+        companyBik: values.companyBik,
+        companyOkpo: values.companyOkpo || undefined,
+      };
 
       thirdDialogRef.value.hide();
     };
@@ -1304,7 +1253,7 @@ export default {
       secondDialogRef,
       thirdDialogRef,
       closeSecondDialog,
-      closeThirdDialog,
+      updateRequisites,
 
       email,
       firstName,
@@ -1377,11 +1326,11 @@ export default {
       cMARoomError,
       cPhoneError,
       cEmailError,
-      // cBankError,
-      // cPayError,
-      // cInnError,
-      // cOkpoError,
-      // cBikError,
+      cBankError,
+      cPayError,
+      cInnError,
+      cOkpoError,
+      cBikError,
       cDirFNameError,
       cDirSNameError,
       cDirLNameError,

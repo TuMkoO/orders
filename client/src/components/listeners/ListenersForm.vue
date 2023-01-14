@@ -2493,10 +2493,6 @@ export default {
         .trim()
         .required("Пожалуйста, введите эл. почту")
         .email("Необходимо ввести корректный email")
-      // .matches(
-      //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      //   "Only alphabets are allowed for this field "
-      // )
     );
 
     const { value: education, errorMessage: educationError } = useField(

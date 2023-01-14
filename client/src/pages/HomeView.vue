@@ -147,39 +147,6 @@
         </div>
       </div>
       <div v-else class="text-center">Уведомлений нет</div>
-      <!-- <div
-        v-else-if="
-          !user.id ||
-          !user.firstName ||
-          !user.secondName ||
-          !user.lastName ||
-          !user.phone ||
-          !user.email ||
-          !user.post ||
-          !user.companyBank ||
-          !user.companyBik ||
-          !user.companyDirFirstName ||
-          !user.companyDirLastName ||
-          !user.companyDirPost ||
-          !user.companyDirSecondName ||
-          !user.companyEmail ||
-          !user.companyFullName ||
-          !user.companyGrounds ||
-          !user.companyInn ||
-          !user.companyLegalAddressCity ||
-          !user.companyLegalAddressCode ||
-          !user.companyLegalAddressHouse ||
-          !user.companyLegalAddressRoom ||
-          !user.companyLegalAddressStreet ||
-          !user.companyOkpo ||
-          !user.companyOwnershipType ||
-          !user.companyPayment ||
-          !user.companyPhone
-        "
-        class="text-center"
-      >
-        В профиле не указаны все данные предприятия
-      </div> -->
     </div>
   </app-page>
 </template>
@@ -209,8 +176,6 @@ export default {
 
     const access = ref(false);
     const user = store.getters["auth/user"];
-
-    // const rows = computed(() => store.getters["orderTraining/orders"]);
 
     const orders = computed(() =>
       store.getters["orderTraining/orders"]

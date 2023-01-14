@@ -92,8 +92,9 @@ router.get(
     if (req.params.id) {
       try {
         const orders = await Order.find({
-          ownerCompany: req.params.id,
+          ownerUser: req.params.id,
         });
+
         res.json(orders);
       } catch (e) {
         res

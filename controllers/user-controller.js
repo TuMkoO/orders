@@ -90,11 +90,11 @@ class UserController {
         companyMailAddressRoom,
         companyPhone,
         companyEmail,
-        // companyBank,
-        // companyPayment,
-        // companyInn,
-        // companyOkpo,
-        // companyBik,
+        companyBank,
+        companyPayment,
+        companyInn,
+        companyOkpo,
+        companyBik,
         companyDirFirstName,
         companyDirSecondName,
         companyDirLastName,
@@ -128,11 +128,11 @@ class UserController {
         companyMailAddressRoom,
         companyPhone,
         companyEmail,
-        // companyBank,
-        // companyPayment,
-        // companyInn,
-        // companyOkpo,
-        // companyBik,
+        companyBank,
+        companyPayment,
+        companyInn,
+        companyOkpo,
+        companyBik,
         companyDirFirstName,
         companyDirSecondName,
         companyDirLastName,
@@ -146,33 +146,6 @@ class UserController {
       next(e);
     }
   }
-  // async updateRequisites(req, res) {
-  //   try {
-  //     // console.log("req.body :::= ", req.body);
-  //     const {
-  //       id,
-  //       companyBank,
-  //       companyPayment,
-  //       companyInn,
-  //       companyOkpo,
-  //       companyBik,
-  //     } = req.body;
-
-  //     const userData = await userService.updateRequisites(
-  //       id,
-  //       companyBank,
-  //       companyPayment,
-  //       companyInn,
-  //       companyOkpo,
-  //       companyBik
-  //     );
-
-  //     return res.json(userData);
-  //   } catch (e) {
-  //     // console.log("e===", e);
-  //     next(e);
-  //   }
-  // }
 
   async updatePassword(req, res) {
     try {
@@ -203,21 +176,6 @@ class UserController {
       return res.status(500).json({ message: e });
     }
   }
-  // async updateCompany(req, res) {
-  //   try {
-  //     // console.log("req.body :::= ", req.body);
-  //     const { id, company } = req.body;
-  //     // console.log("updatePassword req.body::: ", req.body);
-  //     const userData = await userService.updateCompany(id, company);
-  //     return res.json(userData);
-  //   } catch (e) {
-  //     // console.log("ERROR: ", e);
-  //     // next(e);
-  //     // return res.status(500).json({ message: e });
-  //     // return res.status(500).json({ message: e });
-  //     return res.status(500).json({ message: e });
-  //   }
-  // }
 
   async logout(req, res, next) {
     try {

@@ -61,7 +61,7 @@
       </div>
     </q-card-section>
     <q-card-actions align="right" class="bg-white">
-      <q-btn flat class="text-primary" type="submit" label="Сохранить" />
+      <q-btn flat class="text-primary" type="submit" label="Применить" />
       <q-btn flat class="text-red" label="Отмена" v-close-popup />
     </q-card-actions>
   </q-form>
