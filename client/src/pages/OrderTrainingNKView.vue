@@ -632,8 +632,9 @@
                                 order.listener.street +
                                 ", " +
                                 order.listener.homeNumber +
-                                ", " +
-                                order.listener.apartment
+                                (order.listener.apartment
+                                  ? ", " + order.listener.apartment
+                                  : "")
                               }}
                             </div>
                           </div>
@@ -755,7 +756,7 @@
                 @click="print"
                 icon="print"
               />
-              <q-fab-action
+              <!-- <q-fab-action
                 v-if="
                   order.status == 'Принята в работу' ||
                   order.status == 'Идёт обучение' ||
@@ -764,8 +765,8 @@
                 color="amber"
                 text-color="black"
                 icon="picture_as_pdf"
-              />
-              <q-fab-action
+              /> -->
+              <!-- <q-fab-action
                 v-if="
                   access &&
                   (order.status == 'Принята в работу' ||
@@ -775,13 +776,13 @@
                 color="amber"
                 text-color="black"
                 icon="rtt"
-              />
-              <q-fab-action
+              /> -->
+              <!-- <q-fab-action
                 v-if="access"
                 color="amber"
                 text-color="black"
                 icon="content_copy"
-              />
+              /> -->
               <q-fab-action
                 v-if="
                   access ||
@@ -985,7 +986,7 @@ export default {
       modal,
       showModal,
       closeModal,
-      tab: ref("agreement"),
+      tab: ref("main"),
       access,
       showEditFields,
       showEditForm,

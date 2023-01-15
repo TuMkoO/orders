@@ -23,7 +23,6 @@ export default {
   actions: {
     async create({ commit, dispatch }, payload) {
       try {
-        // console.log("payload: ", payload);
         const { data } = await $api.post(
           "api/order-training-numbering/create",
           payload
@@ -63,7 +62,7 @@ export default {
     },
     async load({ commit, dispatch }) {
       try {
-        const { data } = await $api.get("api/order-training-numbering");
+        const { data } = await $api.get("/api/order-training-numbering");
 
         //вызываем mutation
         commit("setOrderNumberings", data);
@@ -81,25 +80,6 @@ export default {
       }
     },
 
-    // async loadById({ commit, dispatch }, id) {
-    //   try {
-    //     const { data } = await $api.get(`/api/order-training/${id}`);
-
-    //     return data;
-    //   } catch (e) {
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: `Заявка с ID ${id} не найдена`,
-    //         type: "danger",
-    //       },
-    //       { root: true }
-    //     );
-
-    //     throw e;
-    //   }
-    // },
-
     async update({ dispatch }, payload) {
       try {
         // console.log(payload);
@@ -113,7 +93,7 @@ export default {
         if (id) {
           // console.log("certificate id", id);
           const data = await $api.put(
-            `api/order-training-numbering/${id}`,
+            `/api/order-training-numbering/${id}`,
             dataload
           );
 
@@ -146,30 +126,6 @@ export default {
         );
       }
     },
-
-    // async remove({ commit, dispatch }, id) {
-    //   try {
-    //     const { data } = await $api.delete(`api/order-training/${id}`);
-
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: "Заявка успешно удалена",
-    //         type: "primary",
-    //       },
-    //       { root: true }
-    //     );
-    //   } catch (e) {
-    //     dispatch(
-    //       "setMessage",
-    //       {
-    //         value: e.message,
-    //         type: "danger",
-    //       },
-    //       { root: true }
-    //     );
-    //   }
-    // },
   },
   getters: {
     ordersNumbering(state) {

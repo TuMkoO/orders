@@ -188,6 +188,7 @@ router.put(
       commentListener,
       commentOrder,
       type,
+      number,
       ownerListener,
       ownerUser,
     } = req.body;
@@ -213,6 +214,7 @@ router.put(
         commentListener,
         commentOrder,
         type,
+        number,
         ownerListener,
         ownerUser,
       });

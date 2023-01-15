@@ -23,7 +23,11 @@
                   <div class="col">
                     <div class="column text-center">
                       <span class="text-bold">Заявка</span>
-                      -
+                      {{
+                        order.number && order.created
+                          ? order.number + " от " + dateFormat(order.created)
+                          : "-"
+                      }}
                     </div>
                   </div>
                   <div class="col">
@@ -246,5 +250,9 @@ export default {
 }
 .banners-container {
   min-width: 930px;
+}
+
+.q-badge {
+  white-space: normal;
 }
 </style>

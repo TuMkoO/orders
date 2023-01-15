@@ -325,7 +325,6 @@ const columnsAdmin = [
       ". " +
       row.listener.lastName[0] +
       ".",
-    // field: (row) => row.firstName,
     format: (val) => `${val}`,
     sortable: true,
   },
@@ -383,7 +382,6 @@ const columnsUser = [
       row.listener.secondName +
       " " +
       row.listener.lastName,
-    // field: (row) => row.firstName,
     format: (val) => `${val}`,
     sortable: true,
   },
@@ -452,9 +450,6 @@ export default {
     const modalTitle = ref("");
 
     onMounted(() => {
-      // console.log("rows: ", rows.value);
-      // console.log(user);
-
       if (user.roles) {
         user.roles.includes("admin") || user.roles.includes("god")
           ? (access.value = true)
@@ -463,25 +458,17 @@ export default {
     });
 
     async function loadOrders() {
-      // loading.value = true;
-
       if (user.roles) {
         if (user.roles.includes("admin") || user.roles.includes("god")) {
           await store.dispatch("orderTraining/load");
         } else {
-          await store.dispatch("orderTraining/loadByCompany", user.company);
+          await store.dispatch("orderTraining/loadByCompany", user.id);
         }
       }
-
-      // loading.value = false;
     }
 
     function showModal(action, order) {
       modal.value = true;
-
-      // if (order) {
-      //   currentOrder.value = order;
-      // }
 
       if (action == "delete") {
         modalType.value = "delete";
@@ -499,8 +486,6 @@ export default {
     }
 
     async function sendForVerification(items) {
-      // console.log(items);
-
       try {
         await items.forEach((item) => {
           const id = item._id;
@@ -549,7 +534,6 @@ export default {
       },
 
       user,
-      // userCompany,
       access,
       columnsAdmin,
       columnsUser,
