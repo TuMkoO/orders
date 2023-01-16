@@ -32,7 +32,7 @@
           </q-input>
         </div>
       </div>
-      <div v-if="user && users">
+      <div v-if="user && users && user.companyShortName">
         <q-table
           :rows="filteredRows"
           :columns="columns"

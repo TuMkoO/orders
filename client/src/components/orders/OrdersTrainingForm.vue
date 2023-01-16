@@ -268,7 +268,7 @@
               ? 'В черновики'
               : 'Сохранить'
           "
-          @click="update"
+          @click="updatee"
           color="primary"
           class="q-mr-md"
         />
@@ -745,8 +745,14 @@ export default {
       } catch (e) {}
     });
 
+    const updatee = handleSubmit(async () => {
+      console.log("11111");
+    });
+
     //сохранение заявки
     const update = handleSubmit(async (values) => {
+      console.log("111111");
+
       const id = props.orderData._id;
 
       const value = {
@@ -804,30 +810,55 @@ export default {
 
           emit("updateSuccess");
         } else if (access.value && status.value == "Идёт обучение") {
-          if (props.orderData.status == "Принята в работу") {
-            await store.dispatch("orderTrainingNumbering/load");
+          await store.dispatch("orderTrainingNumbering/load");
 
-            const numbering =
-              store.getters["orderTrainingNumbering/ordersNumbering"][0];
+          const numbering =
+            store.getters["orderTrainingNumbering/ordersNumbering"][0];
 
-            value.number = numbering.prefix + numbering.num;
-            value.date = new Date();
+          value.number = numbering.prefix + numbering.num;
+          value.date = new Date();
 
-            await store.dispatch("orderTraining/update", { value, id });
+          await store.dispatch("orderTraining/update", { value, id });
 
-            await store.dispatch("orderTrainingNumbering/update", {
-              prefix: numbering.prefix,
-              num: +numbering.num + 1,
-              id: numbering._id,
-            });
+          await store.dispatch("orderTrainingNumbering/update", {
+            prefix: numbering.prefix,
+            num: +numbering.num + 1,
+            id: numbering._id,
+          });
 
-            emit("updateSuccess");
-          } else {
-            store.dispatch("setMessage", {
-              value: "Невозможно начать обучение, заявка еще не была принята",
-              type: "danger",
-            });
-          }
+          emit("updateSuccess");
+
+          // if (props.orderData.status == "Принята в работу") {
+          //   await store.dispatch("orderTrainingNumbering/load");
+
+          //   const numbering =
+          //     store.getters["orderTrainingNumbering/ordersNumbering"][0];
+
+          //   value.number = numbering.prefix + numbering.num;
+          //   value.date = new Date();
+
+          //   await store.dispatch("orderTraining/update", { value, id });
+
+          //   await store.dispatch("orderTrainingNumbering/update", {
+          //     prefix: numbering.prefix,
+          //     num: +numbering.num + 1,
+          //     id: numbering._id,
+          //   });
+
+          //   emit("updateSuccess");
+          // } else {
+          //   store.dispatch("setMessage", {
+          //     value: "Невозможно начать обучение, заявка еще не была принята",
+          //     type: "danger",
+          //   });
+          // }
+        } else if (access.value && status.value == "Выполнена") {
+          value.number = props.orderData.number;
+          value.date = new Date();
+
+          await store.dispatch("orderTraining/update", { value, id });
+
+          emit("updateSuccess");
         } else if (
           !access.value &&
           status.value == "Возвращена на корректировку"
@@ -908,6 +939,7 @@ export default {
       closeModal,
       onSubmit,
       update,
+      updatee,
       updateListeners,
       updateUsers,
       sendForVerification,
