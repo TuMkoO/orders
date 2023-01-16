@@ -973,6 +973,9 @@ export default {
           program: order.value.program,
           company: order.value.company,
           status: "Черновик",
+          commentUser: "",
+          commentListener: "",
+          commentOrder: "",
         };
 
         await store.dispatch("orderTraining/update", { value, id });

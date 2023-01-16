@@ -268,7 +268,7 @@
               ? 'В черновики'
               : 'Сохранить'
           "
-          @click="updatee"
+          @click="update"
           color="primary"
           class="q-mr-md"
         />
@@ -540,21 +540,15 @@ export default {
     );
     const { value: contractDate, errorMessage: cDateError } = useField(
       "contractDate",
-      yup.string().trim()
+      yup.string().trim().nullable()
     );
 
     watch(usersSelect, async (newVal, oldVal) => {
       if (newVal !== "" && newVal !== null) {
-        // console.log(newVal);
-        // console.log("usersVal", usersVal.value);
-
         await store.dispatch("listener/loadByCompany", newVal.value);
       } else {
-        // console.log("usersVal", usersVal.value);
         store.commit("listener/setListeners", []);
       }
-
-      // console.log("props.orderData::", props.orderData);
 
       if (props.orderData) listenerChangeCount.value += 1;
 
@@ -702,8 +696,6 @@ export default {
                 ")"
         )[0];
 
-      // console.log(newListener);
-
       listenersSelect.value = newListener;
     };
 
@@ -724,8 +716,11 @@ export default {
 
     //Создание заявки
     const onSubmit = handleSubmit(async (values) => {
-      // console.log("onSubmit:", values);
       try {
+        // for (let i = 0; i < 20; i++) {
+
+        // }
+
         await store.dispatch("orderTraining/create", {
           type: props.orderType,
           program: values.program,
@@ -745,14 +740,8 @@ export default {
       } catch (e) {}
     });
 
-    const updatee = handleSubmit(async () => {
-      console.log("11111");
-    });
-
     //сохранение заявки
     const update = handleSubmit(async (values) => {
-      console.log("111111");
-
       const id = props.orderData._id;
 
       const value = {
@@ -900,33 +889,6 @@ export default {
       } catch (e) {}
     });
 
-    const sendForVerification = handleSubmit(async (values) => {
-      try {
-        const id = props.orderData._id;
-
-        const value = {
-          type: props.orderType,
-          program: values.program,
-          status: status.value,
-          number: "",
-          commentUser: commentUser.value,
-          commentListener: commentListener.value,
-          commentOrder: commentOrder.value,
-          contractNumber: values.contractNumber,
-          contractDate: values.contractDate,
-          date: new Date(),
-          listener: listenerVal.value,
-          user: usersVal.value,
-          ownerListener: values.listenersSelect.value,
-          ownerUser: values.usersSelect.value,
-        };
-
-        await store.dispatch("orderTraining/update", { value, id });
-
-        emit("updateSuccess");
-      } catch (e) {}
-    });
-
     return {
       access,
       loading,
@@ -939,10 +901,8 @@ export default {
       closeModal,
       onSubmit,
       update,
-      updatee,
       updateListeners,
       updateUsers,
-      sendForVerification,
       dateFormat,
 
       usersSelectOptions,

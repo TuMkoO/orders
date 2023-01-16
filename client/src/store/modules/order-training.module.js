@@ -23,7 +23,6 @@ export default {
   actions: {
     async create({ commit, dispatch }, payload) {
       try {
-        console.log("payload: ", payload);
         const { data } = await $api.post("api/order-training/create", payload);
 
         dispatch(
@@ -35,26 +34,14 @@ export default {
           { root: true }
         );
       } catch (e) {
-        console.log("e===", e);
-        // if (e.message === "Request failed with status code 400") {
-        //   dispatch(
-        //     "setMessage",
-        //     {
-        //       value: "Заявка с таким номером уже добавлена",
-        //       type: "danger",
-        //     },
-        //     { root: true }
-        //   );
-        // } else {
-        //   dispatch(
-        //     "setMessage",
-        //     {
-        //       value: e,
-        //       type: "danger",
-        //     },
-        //     { root: true }
-        //   );
-        // }
+        dispatch(
+          "setMessage",
+          {
+            value: e,
+            type: "danger",
+          },
+          { root: true }
+        );
 
         throw e;
       }
@@ -62,25 +49,6 @@ export default {
     async load({ commit, dispatch }) {
       try {
         const { data } = await $api.get("api/order-training");
-
-        // console.log("order-training.module/load data: ", data);
-
-        // const userRole = store.getters["auth/user"].roles;
-
-        // if (userRole) {
-        //   if (userRole.includes("admin") || userRole.includes("god")) {
-        //     //вызываем mutation
-        //     commit(
-        //       "setOrders",
-        //       data.filter((order) => {
-        //         return order.status !== "Черновик";
-        //       })
-        //     );
-        //   } else {
-        //     //вызываем mutation
-        //     commit("setOrders", data);
-        //   }
-        // }
 
         //вызываем mutation
         commit("setOrders", data);
@@ -179,7 +147,7 @@ export default {
 
     async remove({ commit, dispatch }, id) {
       try {
-        const { data } = await $api.delete(`api/order-training/${id}`);
+        const { data } = await $api.delete(`/api/order-training/${id}`);
 
         dispatch(
           "setMessage",

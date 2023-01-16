@@ -2767,9 +2767,6 @@ export default {
       secondDialog.value = false;
     }
     function updateListenerInfo(values) {
-      console.log("updateListenerInfo: ", values);
-      console.log("updateListenerInfo: ", values.oldValues);
-
       if (values.type == "pk") {
         //Поиск номера элемента
         const pkInfoItemIndex = pkInfo.value.findIndex(
