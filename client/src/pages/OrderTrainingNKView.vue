@@ -31,7 +31,7 @@
                 orderType="nk"
                 :orderData="order"
                 @updateSuccess="updateOrder"
-                @hide="showEditFields = false"
+                @hide="hideEditForm"
               />
             </div>
           </div>
@@ -896,11 +896,11 @@ export default {
           route.params.id
         );
 
-        console.log(order);
-
         order.value.status == "Черновик"
           ? (title.value = "Черновик заявки")
-          : "Заявка № 00000000";
+          : order.value.number
+          ? (title.value = `Заявка на повышение квалификации НК № ${order.value.number}`)
+          : (title.value = "Заявка на повышение квалификации НК");
 
         if (
           order.value.status == "Черновик" ||
@@ -948,6 +948,18 @@ export default {
     const updateOrder = () => {
       showEditFields.value = false;
       loadingData();
+
+      title.value = order.value.number
+        ? `Заявка на повышение квалификации НК № ${order.value.number}`
+        : "Заявка на повышение квалификации НК";
+    };
+
+    const hideEditForm = () => {
+      showEditFields.value = false;
+
+      title.value = order.value.number
+        ? `Заявка на повышение квалификации НК № ${order.value.number}`
+        : "Заявка на повышение квалификации НК";
     };
 
     const cancelOrder = async () => {
@@ -998,6 +1010,7 @@ export default {
       remove,
       print,
       updateOrder,
+      hideEditForm,
       cancelOrder,
       dateFormat,
     };

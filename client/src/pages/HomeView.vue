@@ -144,7 +144,11 @@
               v-model="page"
               :min="currentPage"
               :max="Math.ceil(dataLength / totalPages)"
+              :max-pages="6"
+              boundary-numbers
               input-class="text-orange-10"
+              direction-links
+              boundary-links
             >
             </q-pagination>
           </div>

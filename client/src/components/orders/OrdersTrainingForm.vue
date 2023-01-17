@@ -717,24 +717,22 @@ export default {
     //Создание заявки
     const onSubmit = handleSubmit(async (values) => {
       try {
-        // for (let i = 0; i < 20; i++) {
-
-        // }
-
-        await store.dispatch("orderTraining/create", {
-          type: props.orderType,
-          program: values.program,
-          status: status.value,
-          commentUser: commentUser.value,
-          commentListener: commentListener.value,
-          commentOrder: commentOrder.value,
-          contractNumber: values.contractNumber,
-          contractDate: values.contractDate,
-          listener: listenerVal.value,
-          user: usersVal.value,
-          ownerListener: values.listenersSelect.value,
-          ownerUser: values.usersSelect.value,
-        });
+        for (let i = 0; i < 20; i++) {
+          await store.dispatch("orderTraining/create", {
+            type: props.orderType,
+            program: values.program,
+            status: status.value,
+            commentUser: commentUser.value,
+            commentListener: commentListener.value,
+            commentOrder: commentOrder.value,
+            contractNumber: values.contractNumber,
+            contractDate: values.contractDate,
+            listener: listenerVal.value,
+            user: usersVal.value,
+            ownerListener: values.listenersSelect.value,
+            ownerUser: values.usersSelect.value,
+          });
+        }
 
         router.push("/orders-training-nk");
       } catch (e) {}
@@ -799,48 +797,31 @@ export default {
 
           emit("updateSuccess");
         } else if (access.value && status.value == "Идёт обучение") {
-          await store.dispatch("orderTrainingNumbering/load");
+          if (props?.orderData?.status == "Идёт обучение") {
+            value.number = props.orderData.number;
+          } else {
+            await store.dispatch("orderTrainingNumbering/load");
+            const numbering =
+              store.getters["orderTrainingNumbering/ordersNumbering"][0];
 
-          const numbering =
-            store.getters["orderTrainingNumbering/ordersNumbering"][0];
+            value.number = numbering.prefix + numbering.num;
 
-          value.number = numbering.prefix + numbering.num;
+            await store.dispatch("orderTrainingNumbering/update", {
+              prefix: numbering.prefix,
+              num: +numbering.num + 1,
+              id: numbering._id,
+            });
+          }
+
+          // const numbering =
+          //   store.getters["orderTrainingNumbering/ordersNumbering"][0];
+
+          // value.number = numbering.prefix + numbering.num;
           value.date = new Date();
 
           await store.dispatch("orderTraining/update", { value, id });
 
-          await store.dispatch("orderTrainingNumbering/update", {
-            prefix: numbering.prefix,
-            num: +numbering.num + 1,
-            id: numbering._id,
-          });
-
           emit("updateSuccess");
-
-          // if (props.orderData.status == "Принята в работу") {
-          //   await store.dispatch("orderTrainingNumbering/load");
-
-          //   const numbering =
-          //     store.getters["orderTrainingNumbering/ordersNumbering"][0];
-
-          //   value.number = numbering.prefix + numbering.num;
-          //   value.date = new Date();
-
-          //   await store.dispatch("orderTraining/update", { value, id });
-
-          //   await store.dispatch("orderTrainingNumbering/update", {
-          //     prefix: numbering.prefix,
-          //     num: +numbering.num + 1,
-          //     id: numbering._id,
-          //   });
-
-          //   emit("updateSuccess");
-          // } else {
-          //   store.dispatch("setMessage", {
-          //     value: "Невозможно начать обучение, заявка еще не была принята",
-          //     type: "danger",
-          //   });
-          // }
         } else if (access.value && status.value == "Выполнена") {
           value.number = props.orderData.number;
           value.date = new Date();
@@ -852,8 +833,6 @@ export default {
           !access.value &&
           status.value == "Возвращена на корректировку"
         ) {
-          // value.status = "Отправлена на экспертизу";
-
           await store.dispatch("orderTraining/update", { value, id });
 
           router.push("/orders-training-nk");
