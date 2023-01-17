@@ -216,19 +216,19 @@ class UserService {
   }
 
   async refresh(refreshToken) {
-    //console.log("user-service/refresh refreshToken===", refreshToken); // приходит токен
+    console.log("user-service/refresh refreshToken===", refreshToken); // приходит токен
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
 
     const userData = tokenService.validateRefreshToken(refreshToken);
-    //console.log("user-service/refresh userData:::", userData);
+    console.log("user-service/refresh userData:::", userData);
 
     const tokenFromDb = await tokenService.findToken(refreshToken);
-    //console.log("user-service/refresh tokenFromDb:::", tokenFromDb); //null
+    console.log("user-service/refresh tokenFromDb:::", tokenFromDb); //null
 
     if (!userData || !tokenFromDb) {
-      //console.log("ОШИБКА!");
+      console.log("ОШИБКА!");
       throw ApiError.UnauthorizedError();
     }
     //console.log("user-service/refresh userData.id::", userData.id);

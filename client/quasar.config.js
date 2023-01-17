@@ -10,7 +10,7 @@
 
 const { configure } = require("quasar/wrappers");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     // https://v2.quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -53,7 +53,14 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        // API: ctx.dev ? "https://dev.api.com" : "https://prod.api.com",
+        // VUE_APP_DB_URL: "http://localhost:5000/",
+        // BASE_URL: "http://localhost:9000/",
+        VUE_APP_DB_URL: "/",
+        BASE_URL: "/",
+        VUE_APP_DB_URL_HOSTING: "http://edo.kachestvo-donbass.ru/",
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

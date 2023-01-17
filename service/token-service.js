@@ -36,10 +36,10 @@ class TokenService {
       const userData = jwt.verify(token, config.get("jwtRefreshSecret"), {
         ignoreExpiration: true,
       }); // ERROR
-      // console.log("validateRefreshToken userData::: ", userData);
+      console.log("token-service/validateRefreshToken userData::: ", userData);
       return userData;
     } catch (e) {
-      // console.log("validateRefreshToken error", e); // TokenExpiredError: jwt expired
+      console.log("token-service/validateRefreshToken error", e); // TokenExpiredError: jwt expired
       // console.log("validateRefreshToken userData error!!!");
       return null;
     }
@@ -70,7 +70,7 @@ class TokenService {
   async findToken(refreshToken) {
     // console.log("findToken::: ", refreshToken); // токен приходит
     const tokenData = await Token.findOne({ refreshToken });
-    // console.log("findToken tokenData::: ", tokenData); //null ...
+    console.log("findToken tokenData::: ", tokenData); //null ...
     return tokenData;
   }
 }

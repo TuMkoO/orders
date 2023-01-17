@@ -33,7 +33,7 @@ module.exports = function (req, res, next) {
     req.user = userData;
     next();
   } catch (e) {
-    console.log("auth.middleware error 4");
+    console.log("auth.middleware error 4", e);
     return next(ApiError.UnauthorizedError());
   }
 };

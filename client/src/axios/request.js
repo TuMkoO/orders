@@ -36,14 +36,7 @@ $api.interceptors.response.use(
           ? (axios.defaults.baseURL = process.env.VUE_APP_DB_URL_HOSTING)
           : (axios.defaults.baseURL = process.env.VUE_APP_DB_URL);
 
-        console.log("process.env == ", process.env);
-        console.log(
-          "process.env.VUE_APP_DB_URL == ",
-          process.env.VUE_APP_DB_URL
-        );
-        console.log("axios.defaults.baseURL == ", axios.defaults.baseURL);
-
-        const { data } = await axios.get("/api/auth/refresh", {
+        const { data } = await axios.get("api/auth/refresh", {
           withCredentials: true,
         });
 

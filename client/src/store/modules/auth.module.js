@@ -431,7 +431,7 @@ export default {
           ? (axios.defaults.baseURL = process.env.VUE_APP_DB_URL_HOSTING)
           : (axios.defaults.baseURL = process.env.VUE_APP_DB_URL);
 
-        const { data } = await axios.get("/api/auth/refresh", {
+        const { data } = await axios.get("api/auth/refresh", {
           withCredentials: true,
         });
 
