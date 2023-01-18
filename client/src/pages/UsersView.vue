@@ -32,7 +32,6 @@
 
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="users">
-            <!-- <div class="text-h6 text-center">Пользователи</div> -->
             <div v-if="!loading" class="row justify-center">
               <UsersTable :users="clientUsers" @update-table="updateUsers" />
             </div>
@@ -42,7 +41,6 @@
           </q-tab-panel>
 
           <q-tab-panel name="admins">
-            <!-- <div class="text-h6 text-center">Администраторы</div> -->
             <div v-if="!loading" class="row justify-center">
               <UsersTable :users="adminUsers" @update-table="updateUsers" />
             </div>
@@ -54,7 +52,7 @@
           <q-tab-panel name="register">
             <div class="row justify-center">
               <UsersForm
-                :buttonTitle="'Сохранить'"
+                :buttonTitle="'Создать'"
                 :submitType="'register'"
                 @success="updateUsers"
               />
@@ -102,7 +100,6 @@ export default {
       tab.value = tabVal.value;
 
       await store.dispatch("auth/loadUsers");
-      // await store.dispatch("company/load");
 
       users.value = store.getters["auth/users"];
 
@@ -128,8 +125,6 @@ export default {
     );
 
     async function updateUsers(value) {
-      // console.log(value);
-
       await store.dispatch("auth/loadUsers");
       users.value = store.getters["auth/users"];
       adminUsers.value = store.getters["auth/users"].filter((item) =>

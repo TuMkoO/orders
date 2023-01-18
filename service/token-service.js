@@ -5,7 +5,7 @@ const config = require("config");
 class TokenService {
   generateTokens(payload) {
     const accessToken = jwt.sign(payload, config.get("jwtSecret"), {
-      expiresIn: "15s",
+      expiresIn: "30m",
     });
     const refreshToken = jwt.sign(payload, config.get("jwtRefreshSecret"), {
       expiresIn: "30d",
@@ -36,10 +36,10 @@ class TokenService {
       const userData = jwt.verify(token, config.get("jwtRefreshSecret"), {
         ignoreExpiration: true,
       }); // ERROR
-      console.log("token-service/validateRefreshToken userData::: ", userData);
+      //console.log("token-service/validateRefreshToken userData::: ", userData);
       return userData;
     } catch (e) {
-      console.log("token-service/validateRefreshToken error", e); // TokenExpiredError: jwt expired
+      //console.log("token-service/validateRefreshToken error", e); // TokenExpiredError: jwt expired
       // console.log("validateRefreshToken userData error!!!");
       return null;
     }
@@ -53,7 +53,7 @@ class TokenService {
     if (tokenData) {
       tokenData.refreshToken = refreshToken;
       // console.log("token-service/saveToken tokenData2:::", tokenData);
-      return tokenData.save();
+      return await tokenData.save();
     }
     // console.log("token-service/saveToken tokenData3:::", tokenData);
     const token = await Token.create({ user: userId, refreshToken });
@@ -68,9 +68,11 @@ class TokenService {
   }
 
   async findToken(refreshToken) {
-    // console.log("findToken::: ", refreshToken); // токен приходит
+    //console.log("token-service/findToken refreshToken::: ", refreshToken); // токен приходит
     const tokenData = await Token.findOne({ refreshToken });
-    console.log("findToken tokenData::: ", tokenData); //null ...
+    const tokens = await Token.find();
+    //console.log("token-service/findToken tokenData::: ", tokenData); //null ...
+    //console.log("token-service/findToken tokens::: ", tokens); // токен уже сменился, поэтому не находит refreshToken
     return tokenData;
   }
 }

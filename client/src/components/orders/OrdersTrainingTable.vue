@@ -465,8 +465,6 @@ export default {
           await store.dispatch("orderTraining/loadByCompany", user.id);
         }
       }
-
-      console.log("обновление");
     }
 
     function showModal(action, order) {
@@ -513,15 +511,13 @@ export default {
     }
 
     async function remove(items) {
-      console.log(items);
-
-      await items.forEach(async (item) => {
-        await store.dispatch("orderTraining/remove", item._id);
-
-        console.log("удаление");
-      });
+      // console.log(items);
 
       closeModal();
+
+      for (const item of items) {
+        await store.dispatch("orderTraining/remove", item._id);
+      }
 
       await loadOrders();
 

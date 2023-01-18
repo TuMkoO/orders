@@ -35,7 +35,8 @@
                       <span class="text-bold">Договор</span>
                       {{
                         order.contractNumber && order.contractDate
-                          ? order.contractNumber +
+                          ? "№" +
+                            order.contractNumber +
                             " от " +
                             dateFormat(order.contractDate)
                           : "не указан"

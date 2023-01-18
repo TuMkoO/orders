@@ -717,22 +717,20 @@ export default {
     //Создание заявки
     const onSubmit = handleSubmit(async (values) => {
       try {
-        for (let i = 0; i < 20; i++) {
-          await store.dispatch("orderTraining/create", {
-            type: props.orderType,
-            program: values.program,
-            status: status.value,
-            commentUser: commentUser.value,
-            commentListener: commentListener.value,
-            commentOrder: commentOrder.value,
-            contractNumber: values.contractNumber,
-            contractDate: values.contractDate,
-            listener: listenerVal.value,
-            user: usersVal.value,
-            ownerListener: values.listenersSelect.value,
-            ownerUser: values.usersSelect.value,
-          });
-        }
+        await store.dispatch("orderTraining/create", {
+          type: props.orderType,
+          program: values.program,
+          status: status.value,
+          commentUser: commentUser.value,
+          commentListener: commentListener.value,
+          commentOrder: commentOrder.value,
+          contractNumber: values.contractNumber,
+          contractDate: values.contractDate,
+          listener: listenerVal.value,
+          user: usersVal.value,
+          ownerListener: values.listenersSelect.value,
+          ownerUser: values.usersSelect.value,
+        });
 
         router.push("/orders-training-nk");
       } catch (e) {}

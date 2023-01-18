@@ -40,6 +40,7 @@ export default {
           user.value.roles.includes("god")
         ) {
           await store.dispatch("listener/load");
+          await store.dispatch("auth/loadUsers");
         } else {
           await store.dispatch("listener/loadByCompany", user.value.id);
         }

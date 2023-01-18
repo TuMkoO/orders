@@ -32,6 +32,7 @@
           </q-input>
         </div>
       </div>
+
       <div v-if="user && users && user.companyShortName">
         <q-table
           :rows="filteredRows"
@@ -292,7 +293,7 @@ export default {
     const currentListener = ref();
 
     onMounted(async () => {
-      // loadListeners();
+      loading.value = true;
 
       if (user.value.roles.length) {
         if (
@@ -300,20 +301,12 @@ export default {
           user.value.roles.includes("god")
         ) {
           access.value = true;
-          // await store.dispatch("listener/load");
-
-          loading.value = true;
-
-          await store.dispatch("auth/loadUsers");
-
-          // console.log("users: ", users.value);
-
-          loading.value = false;
         } else {
           access.value = false;
-          // await store.dispatch("listener/loadByCompany", user.company);
         }
       }
+
+      loading.value = false;
     });
 
     const loadListeners = async () => {
