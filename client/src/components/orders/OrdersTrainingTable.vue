@@ -94,11 +94,7 @@
         </template>
         <template v-slot:body-cell-date="props">
           <q-td :props="props">
-            {{
-              props.row.status == "Идёт обучение"
-                ? dateFormat(props.row.date)
-                : "Не задана"
-            }}
+            {{ dateFormat(props.row.date) }}
           </q-td>
         </template>
         <template v-slot:body-cell-companyShortName="props">
