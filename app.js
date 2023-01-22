@@ -58,3 +58,16 @@ async function start() {
 }
 
 start();
+
+export default function handler(request, response) {
+  // api/[name].js -> /api/lee
+  // req.query.name -> "lee"
+  // const { name } = request.query;
+  // return response.end(`Hello ${name}!`);
+  return response.end(`Hello ${request}!`);
+}
+
+// export default (req, res) => {
+//   console.log('Testing')
+//   res.status(200).json({text: 'Hello'})
+// }

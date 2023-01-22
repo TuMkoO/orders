@@ -52,7 +52,7 @@ export default {
           { withCredentials: true }
         );
 
-        console.log("auth.module/login() data:: ", data);
+        // console.log("auth.module/login() data:: ", data);
 
         if (data.accessToken) {
           localStorage.setItem("token", data.accessToken);
