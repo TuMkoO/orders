@@ -1,5 +1,5 @@
 {
-  "port": 80,
+  "port": 5000,
   "jwtSecret": "5kM4CFoXCr3liA5XBXdYGs9wCm1J9LXg",
   "jwtRefreshSecret": "ZiTQ3zrfI2BPe5IbvtFNQc3bKUoBlFHV",
   "mongoUri": "mongodb+srv://TuMko:F8oYGk3fTkgdEJBV@cluster0.sk7mefd.mongodb.net/?retryWrites=true&w=majority",
