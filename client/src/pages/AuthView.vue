@@ -116,7 +116,8 @@ export default {
     // функция входа
     const onSubmit = handleSubmit(async (values) => {
       try {
-        await store.dispatch("auth/login", values);
+        // await store.dispatch("auth/login", values);
+        await store.dispatch("auth/logout");
 
         router.push("/");
       } catch (e) {}
