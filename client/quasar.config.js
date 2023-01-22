@@ -80,10 +80,11 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         // string shorthand
-        "/api": "http://localhost:5000",
+        "/api": "https://localhost:5000",
       },
 
       // https: true
+      https: true,
       open: true, // opens browser window automatically
     },
 
