@@ -28,7 +28,9 @@ export default {
 
     onBeforeMount(async () => {
       loading.value = true;
+      console.log("111");
       await store.dispatch("system/load");
+      console.log("222");
       loading.value = false;
     });
 
