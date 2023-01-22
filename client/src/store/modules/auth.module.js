@@ -52,7 +52,7 @@ export default {
           { withCredentials: true }
         );
 
-        // console.log("auth.module/login() data.user:: ", data.user);
+        console.log("auth.module/login() data:: ", data);
 
         if (data.accessToken) {
           localStorage.setItem("token", data.accessToken);
@@ -64,7 +64,7 @@ export default {
           });
         }
       } catch (e) {
-        // console.log(e);
+        console.log(e);
         let error = null;
         // if (e == "Error: Request failed with status code 400") {
         //   error = "Введены неверные логин или пароль";
