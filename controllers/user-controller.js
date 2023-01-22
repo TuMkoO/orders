@@ -51,6 +51,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: process.env.NODE_ENV === "production" ? true : false,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
@@ -183,6 +184,7 @@ class UserController {
       res.clearCookie("refreshToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production" ? true : false,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
@@ -218,6 +220,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: process.env.NODE_ENV === "production" ? true : false,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
