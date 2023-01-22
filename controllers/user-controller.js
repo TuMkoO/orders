@@ -50,6 +50,7 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: process.env.NODE_ENV === "production" ? true : false,
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
@@ -181,6 +182,7 @@ class UserController {
       const token = await userService.logout(refreshToken);
       res.clearCookie("refreshToken", {
         httpOnly: true,
+        secure: process.env.NODE_ENV === "production" ? true : false,
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
@@ -215,6 +217,7 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: process.env.NODE_ENV === "production" ? true : false,
         domain:
           process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });

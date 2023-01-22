@@ -81,11 +81,11 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         // string shorthand
-        "/api": "https://localhost:5000",
+        "/api": ctx.dev ? "http://localhost:5000" : "https://localhost:5000",
       },
 
       // https: true
-      https: true,
+      https: ctx.dev ? false : true,
       open: true, // opens browser window automatically
     },
 
@@ -138,7 +138,7 @@ module.exports = configure(function (ctx) {
       // manualPostHydrationTrigger: true,
 
       //prodPort: 3000, // The default port that the production server should use
-      prodPort: 5000, // The default port that the production server should use
+      prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
