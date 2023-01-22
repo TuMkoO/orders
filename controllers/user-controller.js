@@ -51,9 +51,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         domain:
-          process.env.NODE_ENV === "production"
-            ? "kachestvo-donbass.ru"
-            : "localhost",
+          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
       return res.json(userData);
     } catch (e) {
@@ -184,9 +182,7 @@ class UserController {
       res.clearCookie("refreshToken", {
         httpOnly: true,
         domain:
-          process.env.NODE_ENV === "production"
-            ? "kachestvo-donbass.ru"
-            : "localhost",
+          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
       return res.json(token);
     } catch (e) {
@@ -220,9 +216,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         domain:
-          process.env.NODE_ENV === "production"
-            ? "kachestvo-donbass.ru"
-            : "localhost",
+          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
       });
       return res.json(userData);
     } catch (e) {

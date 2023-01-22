@@ -4,5 +4,5 @@
   "jwtRefreshSecret": "ZiTQ3zrfI2BPe5IbvtFNQc3bKUoBlFHV",
   "mongoUri": "mongodb+srv://TuMko:F8oYGk3fTkgdEJBV@cluster0.sk7mefd.mongodb.net/?retryWrites=true&w=majority",
   "baseUrl": "https://localhost:5000",
-  "clientUrl": "https://edo.kachestvo-donbass.ru"
+  "clientUrl": "https://orders-henna.vercel.app"
 }
