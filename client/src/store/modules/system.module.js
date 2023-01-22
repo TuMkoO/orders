@@ -70,11 +70,12 @@ export default {
           headers: headers,
         });
 
-        // console.log("system/module load data::: ", data);
+        console.log("system/module load data::: ", data);
 
         //вызываем mutation
         commit("setSystems", data[0]);
       } catch (e) {
+        console.log(e);
         dispatch(
           "setMessage",
           {

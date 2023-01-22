@@ -26,21 +26,16 @@ export default {
     //loader
     const loading = ref(false);
 
-    const systemSettings = store.getters["system/systems"];
-
     onBeforeMount(async () => {
       loading.value = true;
 
       await store.dispatch("system/load");
-
-      console.log("systemSettings::", systemSettings);
 
       loading.value = false;
     });
 
     return {
       loading,
-      // systemSettings,
     };
   },
   components: { TheFooter, AppLoader, AppMessage },
