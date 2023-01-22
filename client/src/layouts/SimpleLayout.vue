@@ -26,7 +26,7 @@ export default {
     //loader
     const loading = ref(false);
 
-    const systemSettings = computed(() => store.getters["system/systems"]);
+    const systemSettings = store.getters["system/systems"];
 
     onBeforeMount(async () => {
       loading.value = true;
