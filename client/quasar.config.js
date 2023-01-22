@@ -56,10 +56,10 @@ module.exports = configure(function (ctx) {
       // analyze: true,
       env: {
         // API: ctx.dev ? "https://dev.api.com" : "https://prod.api.com",
-        VUE_APP_DB_URL: "http://localhost:5000/",
-        BASE_URL: "http://localhost:9000/",
-        // VUE_APP_DB_URL: "/",
-        // BASE_URL: "/",
+        // VUE_APP_DB_URL: "http://localhost:5000/",
+        // BASE_URL: "http://localhost:9000/",
+        VUE_APP_DB_URL: "/",
+        BASE_URL: "/",
         VUE_APP_DB_URL_HOSTING: "https://orders-henna.vercel.app/",
       },
       // rawDefine: {}
@@ -137,8 +137,8 @@ module.exports = configure(function (ctx) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      //prodPort: 3000, // The default port that the production server should use
-      prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
+      prodPort: 3000, // The default port that the production server should use
+      //prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
