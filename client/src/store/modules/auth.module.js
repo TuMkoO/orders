@@ -45,7 +45,7 @@ export default {
     async login({ commit, dispatch }, payload) {
       try {
         const { data } = await $api.post(
-          "api/auth/login",
+          "/api/auth/login",
           {
             ...payload,
           },
@@ -64,7 +64,7 @@ export default {
           });
         }
       } catch (e) {
-        console.log(e);
+        console.log("e ===", e);
         let error = null;
         // if (e == "Error: Request failed with status code 400") {
         //   error = "Введены неверные логин или пароль";
