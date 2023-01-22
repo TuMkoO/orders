@@ -26,15 +26,18 @@ export default {
     //loader
     const loading = ref(false);
 
+    const systemSettings = computed(() => store.getters["system/systems"]);
+
     onBeforeMount(async () => {
       loading.value = true;
-      console.log("111");
+
       await store.dispatch("system/load");
-      console.log("222");
+
+      console.log("systemSettings::", systemSettings);
+
       loading.value = false;
     });
 
-    // const systemSettings = computed(() => store.getters["system/systems"]);
     return {
       loading,
       // systemSettings,
