@@ -15,20 +15,8 @@ app.use(
   })
 );
 
-app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/home", require("./routes/home"));
 app.use("/api/system", require("./routes/system.routes"));
-// app.use("/api/company", require("./routes/company.routes"));
-app.use("/api/ownership-type", require("./routes/ownershipType.routes"));
-app.use(
-  "/api/certification-system",
-  require("./routes/certificationSystem.routes")
-);
-app.use("/api/order-training", require("./routes/orderTraining.routes"));
-app.use(
-  "/api/order-training-numbering",
-  require("./routes/orderTrainingNumbering.routes")
-);
-app.use("/api/listeners", require("./routes/listeners.routes"));
 
 app.use(errorMiddleware);
 
@@ -41,6 +29,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = config.get("port") || 5000;
+
+console.log("PORT: ", PORT);
 
 async function start() {
   try {

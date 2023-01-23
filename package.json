@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "client:install": "npm install --prefix client",
-    "client:build": "npm run build --prefix client",
-    "start": "cross-env NODE_ENV=production node app.js",
-    "server": "nodemon app.js",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\"  \"npm run dev --prefix client\""
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "Timofey U",
