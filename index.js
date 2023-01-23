@@ -17,7 +17,6 @@ app.use(
 
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/system", require("./routes/system.routes"));
-// app.use("/api/company", require("./routes/company.routes"));
 app.use("/api/ownership-type", require("./routes/ownershipType.routes"));
 app.use(
   "/api/certification-system",
