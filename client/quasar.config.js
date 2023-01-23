@@ -61,7 +61,7 @@ module.exports = configure(function (ctx) {
         VUE_APP_DB_URL: "/",
         BASE_URL: "/",
         VUE_APP_DB_URL_HOSTING: "/",
-        // VUE_APP_DB_URL_HOSTING: "https://orders-henna.vercel.app/",
+        // VUE_APP_DB_URL_HOSTING: "https://orders-zeta.vercel.app/",
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
