@@ -1,30 +1,15 @@
-const express = require("express");
+// Import packages
 const config = require("config");
-const mongoose = require("mongoose");
+const express = require("express");
+const home = require("./routes/home");
 
+// Middlewares
 const app = express();
-app.use(express.json({ extended: true }));
+app.use(express.json());
 
-app.use("/home", require("./routes/home"));
-app.use("/api/system", require("./routes/system.routes"));
+// Routes
+app.use("/home", home);
 
-const PORT = config.get("port") || 5000;
-
-console.log("PORT: ", PORT);
-
-async function start() {
-  try {
-    await mongoose.connect(config.get("mongoUri"), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    app.listen(PORT, () =>
-      console.log(`App has been started on port ${PORT}...`)
-    );
-  } catch (e) {
-    console.log("Server Error", e.message);
-    process.exit(1);
-  }
-}
-
-start();
+// connection
+const port = config.get("port") || 5000;
+app.listen(port, () => console.log(`Listening to port ${port}`));
