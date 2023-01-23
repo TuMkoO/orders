@@ -13,7 +13,6 @@
   "author": "Timofey U",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.3.7",
     "express": "^4.18.1",
     "express-validator": "^6.14.2"
   },
