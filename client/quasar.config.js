@@ -67,7 +67,7 @@ module.exports = configure(function (ctx) {
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
-      // polyfillModulePreload: true,
+      polyfillModulePreload: true,
       // distDir
       distDir: "../public",
 
@@ -139,8 +139,8 @@ module.exports = configure(function (ctx) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      //prodPort: 3000, // The default port that the production server should use
-      prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
+      prodPort: 3000, // The default port that the production server should use
+      //prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
