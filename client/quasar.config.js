@@ -44,8 +44,8 @@ module.exports = configure(function (ctx) {
         node: "node16",
       },
 
-      //vueRouterMode: "hash", // available values: 'hash', 'history'
-      vueRouterMode: "history", // available values: 'hash', 'history'
+      vueRouterMode: "hash", // available values: 'hash', 'history'
+      //vueRouterMode: "history", // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -138,8 +138,8 @@ module.exports = configure(function (ctx) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      prodPort: 3000, // The default port that the production server should use
-      //prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
+      //prodPort: 3000, // The default port that the production server should use
+      prodPort: ctx.dev ? 3000 : 5000, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
