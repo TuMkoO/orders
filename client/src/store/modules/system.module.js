@@ -24,7 +24,6 @@ export default {
   actions: {
     async create({ commit, dispatch }, payload) {
       try {
-        console.log(payload);
         //получаем токен из store
         const token = store.getters["auth/token"];
 
@@ -70,12 +69,10 @@ export default {
           headers: headers,
         });
 
-        console.log("system/module load data::: ", data);
-
         //вызываем mutation
         commit("setSystems", data[0]);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         dispatch(
           "setMessage",
           {

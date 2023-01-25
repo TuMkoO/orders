@@ -38,7 +38,6 @@ class UserController {
 
       return res.json(userData);
     } catch (e) {
-      // console.log("registration====", e);
       next(e);
     }
   }
@@ -53,7 +52,7 @@ class UserController {
         secure: process.env.NODE_ENV === "production" ? true : false,
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
-          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
+          process.env.NODE_ENV === "production" ? "cyclic.app" : "localhost",
       });
       return res.json(userData);
     } catch (e) {
@@ -162,11 +161,7 @@ class UserController {
       // return res.json(userData);
       return res.status(201).json({ message: "Пароль успешно изменён" });
     } catch (e) {
-      // console.log("ERROR: ", e);
-      // next(e);
-      // return res.status(500).json({ message: e });
-      // return res.status(500).json({ message: e });
-      return res.status(500).json({ message: e });
+      next(e);
     }
   }
   async updateUserPassword(req, res) {
@@ -188,7 +183,7 @@ class UserController {
         secure: process.env.NODE_ENV === "production" ? true : false,
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
-          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
+          process.env.NODE_ENV === "production" ? "cyclic.app" : "localhost",
       });
       return res.json(token);
     } catch (e) {
@@ -224,7 +219,7 @@ class UserController {
         secure: process.env.NODE_ENV === "production" ? true : false,
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         domain:
-          process.env.NODE_ENV === "production" ? "vercel.app" : "localhost",
+          process.env.NODE_ENV === "production" ? "cyclic.app" : "localhost",
       });
       return res.json(userData);
     } catch (e) {

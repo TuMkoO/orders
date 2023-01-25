@@ -1,15 +1,21 @@
 const jwt = require("jsonwebtoken");
 const Token = require("../models/Token");
-const config = require("config");
+// const config = require("config");
 
 class TokenService {
   generateTokens(payload) {
-    const accessToken = jwt.sign(payload, config.get("jwtSecret"), {
+    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
       expiresIn: "30m",
     });
-    const refreshToken = jwt.sign(payload, config.get("jwtRefreshSecret"), {
+    // const accessToken = jwt.sign(payload, config.get("jwtSecret"), {
+    //   expiresIn: "30m",
+    // });
+    const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
       expiresIn: "30d",
     });
+    // const refreshToken = jwt.sign(payload, config.get("jwtRefreshSecret"), {
+    //   expiresIn: "30d",
+    // });
     return {
       accessToken,
       refreshToken,
@@ -20,7 +26,8 @@ class TokenService {
     // console.log("token-service/ validateAccessToken token::: ", token);
     try {
       //ОШИБКА ===> userData
-      const userData = jwt.verify(token, config.get("jwtSecret")); // ERROR
+      const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET); // ERROR
+      //const userData = jwt.verify(token, config.get("jwtSecret")); // ERROR
       // console.log("token-service/ validateAccessToken userData::: ", userData);
       return userData;
     } catch (e) {
@@ -33,9 +40,12 @@ class TokenService {
     // console.log("validateRefreshToken token::: ", token); //значение приходит
     try {
       //ОШИБКА ===> userData
-      const userData = jwt.verify(token, config.get("jwtRefreshSecret"), {
+      const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET, {
         ignoreExpiration: true,
       }); // ERROR
+      // const userData = jwt.verify(token, config.get("jwtRefreshSecret"), {
+      //   ignoreExpiration: true,
+      // }); // ERROR
       //console.log("token-service/validateRefreshToken userData::: ", userData);
       return userData;
     } catch (e) {
