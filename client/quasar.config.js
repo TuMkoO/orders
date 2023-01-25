@@ -40,8 +40,7 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
       target: {
-        // browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
-        browser: ["es2015", "edge88", "firefox78", "chrome87", "safari13.1"],
+        browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
       },
 
@@ -62,7 +61,7 @@ module.exports = configure(function (ctx) {
         VUE_APP_DB_URL: "/",
         BASE_URL: "/",
         // VUE_APP_DB_URL_HOSTING: "/",
-        VUE_APP_DB_URL_HOSTING: "https://orders-zeta.vercel.app/",
+        VUE_APP_DB_URL_HOSTING: "https://orders.cyclic.app/",
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
