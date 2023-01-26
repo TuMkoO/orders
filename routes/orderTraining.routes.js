@@ -27,18 +27,6 @@ router.post(
         ownerUser,
       } = req.body;
 
-      // let existing = null;
-
-      // if (number) {
-      //   existing = await Order.findOne({ number });
-      // }
-
-      // if (existing) {
-      //   return res
-      //     .status(400)
-      //     .json({ message: "Такое значение уже добавлено" });
-      // }
-
       const order = new Order({
         user,
         listener,
@@ -139,11 +127,7 @@ router.get(
   roleMiddleware(["admin", "god", "user"]),
   async (req, res) => {
     try {
-      // console.log("req.params.id===", req.params.id);
-
       const order = await Order.findById(req.params.id);
-
-      // console.log("order===", order);
 
       res.json(order);
     } catch (e) {
@@ -192,8 +176,6 @@ router.put(
       ownerListener,
       ownerUser,
     } = req.body;
-
-    // console.log("req.body==", req.body);
 
     try {
       await Order.findByIdAndUpdate(req.params.id, {

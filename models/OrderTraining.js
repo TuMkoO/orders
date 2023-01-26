@@ -18,7 +18,6 @@ const schema = new Schema({
   listener: { type: Object, required: true },
   ownerUser: { type: Types.ObjectId, ref: "User" },
   ownerListener: { type: Types.ObjectId, ref: "Listener" },
-  // ownerProtocol: { type: Types.ObjectId, ref: "Protocol" },
 });
 
 module.exports = model("OrderTraining", schema);

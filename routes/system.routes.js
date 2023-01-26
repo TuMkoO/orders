@@ -12,12 +12,6 @@ router.post(
     try {
       const { brand, link, footer, lockedProfile } = req.body;
 
-      // const existing = await System.findOne({ value });
-
-      // if (existing) {
-      //   return res.status(400).json({ message: "Такое значение уже добавлено" });
-      // }
-
       const system = new System({
         brand,
         link,
@@ -65,7 +59,7 @@ router.put(
       const systemData = await System.findByIdAndUpdate(req.params.id, value, {
         new: true,
       });
-      // res.status(200).json({ message: "Значение успешно обновлено" });
+
       res.status(201).json({ systemData });
     } catch (e) {
       res

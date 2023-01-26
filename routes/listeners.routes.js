@@ -108,11 +108,6 @@ router.post(
         );
       }
 
-      // if (existing) {
-      //   return res
-      //     .status(400)
-      //     .json({ message: "Такое значение уже добавлено" });
-      // }
       if (existingPhone) {
         return res
           .status(400)
@@ -285,11 +280,7 @@ router.get(
   roleMiddleware(["admin", "god", "user"]),
   async (req, res) => {
     try {
-      // console.log("req.params.id===", req.params.id);
-
       const listener = await Listener.findById(req.params.id);
-
-      // console.log("order===", order);
 
       res.json(listener);
     } catch (e) {
@@ -333,10 +324,6 @@ router.put(
   authMiddleware,
   roleMiddleware(["admin", "god", "user"]),
   async (req, res) => {
-    // const value = req.body;
-    // console.log("req.body==", req.body);
-
-    // const { phone, email } = req.body;
     const {
       status,
       numberNk,
@@ -405,13 +392,6 @@ router.put(
       attRiInfo,
       ownerUser,
     } = req.body;
-
-    // console.log("birthday===", req.body.birthday);
-    // console.log("birthday New Date ===", new Date(req.body.birthday));
-    // console.log(
-    //   "birthday New Date TZ ===",
-    //   moment.tz(new Date(req.body.birthday), "Europe/Moscow")
-    // );
 
     let existingPhone = null;
     let existingEmail = null;
@@ -701,7 +681,6 @@ router.put(
       });
       res.status(200).json({ message: "Значение успешно обновлено" });
     } catch (e) {
-      // console.log("ERROR==", e);
       res
         .status(500)
         .json({ message: "Что-то пошло не так, попробуйте снова" });

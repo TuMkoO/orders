@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-// const config = require("config");
 
 module.exports = function (roles) {
   return function (req, res, next) {
@@ -18,9 +17,6 @@ module.exports = function (roles) {
         token,
         process.env.JWT_ACCESS_SECRET
       );
-      // const { roles: userRoles } = jwt.verify(token, config.get("jwtSecret"));
-
-      // console.log("roles::: ", roles);
 
       let hasRole = false;
 

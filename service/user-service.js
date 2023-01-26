@@ -45,11 +45,6 @@ class UserService {
       phone,
     });
 
-    // const userDto = new UserDto(user); // id, email, role
-    // const tokens = tokenService.generateTokens({ ...userDto });
-    // await tokenService.saveToken(userDto.id, tokens.refreshToken);
-
-    // return { ...tokens, user: userDto };
     return user;
   }
 
@@ -155,21 +150,15 @@ class UserService {
 
     const userDto = new UserDto(user);
 
-    // return user;
     return userDto;
   }
 
   async updatePassword(id, oldPassword, newPassword) {
-    // console.log("updatePassword === ", id, oldPassword, newPassword);
     const user = await User.findById(id);
-    // console.log("updatePassword/ user", user);
 
-    // const hashOldPassword = await bcrypt.hash(oldPassword, 3);
-    // console.log("updatePassword/ hashOldPassword", hashOldPassword);
     const isPassEquals = await bcrypt.compare(oldPassword, user.password);
 
     const hashNewPassword = await bcrypt.hash(newPassword, 3);
-    // console.log("updatePassword/ hashNewPassword", hashNewPassword);
 
     if (!isPassEquals) {
       throw ApiError.BadRequest("Неверный текущий пароль");
@@ -215,28 +204,23 @@ class UserService {
   }
 
   async refresh(refreshToken) {
-    //console.log("user-service/refresh refreshToken===", refreshToken); // приходит токен
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
 
     const userData = tokenService.validateRefreshToken(refreshToken);
-    //console.log("user-service/refresh userData:::", userData);
 
     const tokenFromDb = await tokenService.findToken(refreshToken);
-    //console.log("user-service/refresh tokenFromDb:::", tokenFromDb); //null
 
     if (!userData || !tokenFromDb) {
-      // console.log("ОШИБКА!");
       throw ApiError.UnauthorizedError();
     }
-    //console.log("user-service/refresh userData.id::", userData.id);
+
     const user = await User.findById(userData.id);
-    // console.log("user-service/refresh user:::", user);
+
     const userDto = new UserDto(user);
-    //console.log("user-service/refresh userDto::: ", userDto);
+
     const tokens = tokenService.generateTokens({ ...userDto });
-    //console.log("user-service/refresh tokens:::", tokens);
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto };

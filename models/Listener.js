@@ -67,7 +67,6 @@ const schema = new Schema({
   typeRiDateSe: { type: Date, required: false },
   typeRiDateSvi: { type: Date, required: false },
   weldingProductionDate: { type: Date, required: false },
-  // owner: { type: Types.ObjectId, ref: "User" },
   pkInfo: { type: Array, required: false },
   attNkInfo: { type: Array, required: false },
   attRiInfo: { type: Array, required: false },

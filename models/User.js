@@ -38,10 +38,6 @@ const schema = new Schema({
   companyDirSecondName: { type: String, required: false, default: "" },
   companyDirLastName: { type: String, required: false, default: "" },
   companyGrounds: { type: String, required: false, default: "" },
-
-  // card: { type: Object, required: false },
-  // company: { type: Types.ObjectId, ref: "Company" },
-  // company: { type: String, required: false, default: "" },
   ordersTraining: [{ type: Types.ObjectId, ref: "OrderTraining" }],
   listener: [{ type: Types.ObjectId, ref: "Listener" }],
 });
