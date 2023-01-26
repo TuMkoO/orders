@@ -96,8 +96,6 @@
 
 <script>
 import { onMounted, ref } from "vue";
-// import { useRoute } from "vue-router";
-// import { useStore } from "vuex";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 
@@ -107,12 +105,9 @@ export default {
   },
   emits: ["success"],
   setup(props, { emit }) {
-    // const store = useStore();
-
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
-      // console.log(props.passport);
       if (
         props.education?.education &&
         props.education?.institution &&

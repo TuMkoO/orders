@@ -100,23 +100,6 @@
                           }}
                         </div>
 
-                        <!-- <div class="text-subtitle2 text-bold text-grey-9">
-                          Адрес:
-                        </div>
-                        <div class="q-mb-md">
-                          {{
-                            order.mailCode +
-                            ", " +
-                            order.city +
-                            ", " +
-                            order.street +
-                            ", " +
-                            order.homeNumber +
-                            ", " +
-                            order.apartment
-                          }}
-                        </div> -->
-
                         <div class="text-subtitle2 text-bold text-grey-9">
                           Телефон:
                         </div>
@@ -756,33 +739,7 @@
                 @click="print"
                 icon="print"
               />
-              <!-- <q-fab-action
-                v-if="
-                  order.status == 'Принята в работу' ||
-                  order.status == 'Идёт обучение' ||
-                  order.status == 'Выполнена'
-                "
-                color="amber"
-                text-color="black"
-                icon="picture_as_pdf"
-              /> -->
-              <!-- <q-fab-action
-                v-if="
-                  access &&
-                  (order.status == 'Принята в работу' ||
-                    order.status == 'Идёт обучение' ||
-                    order.status == 'Выполнена')
-                "
-                color="amber"
-                text-color="black"
-                icon="rtt"
-              /> -->
-              <!-- <q-fab-action
-                v-if="access"
-                color="amber"
-                text-color="black"
-                icon="content_copy"
-              /> -->
+
               <q-fab-action
                 v-if="
                   access ||
@@ -938,10 +895,10 @@ export default {
       try {
         //удалить удостоверение
         await store.dispatch("orderTraining/remove", id);
-        // modal.value = false;
+
         router.push("/orders-training-nk");
       } catch (e) {
-        // console.log(e);
+        console.log(e);
       }
     };
 
@@ -966,7 +923,6 @@ export default {
       try {
         const id = order.value._id;
         const value = {
-          // listenerId: order.value.listenerId,
           firstName: order.value.firstName,
           secondName: order.value.secondName,
           lastName: order.value.lastName,

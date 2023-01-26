@@ -42,10 +42,8 @@ export default {
       if (user.roles) {
         if (user.roles.includes("admin") || user.roles.includes("god")) {
           access.value = true;
-          // await store.dispatch("listener/load");
         } else {
           access.value = false;
-          // await store.dispatch("listener/loadByCompany", user.company);
         }
       }
 

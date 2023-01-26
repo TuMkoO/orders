@@ -78,13 +78,9 @@ export default {
   },
   emits: ["success"],
   setup(props, { emit }) {
-    // const store = useStore();
-
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
-      // console.log(props.passport);
-
       if (
         props.address?.mailCode &&
         props.address?.city &&

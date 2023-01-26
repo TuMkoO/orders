@@ -91,7 +91,6 @@ export default {
     //Генерация пароля
     function generatePassword() {
       let pass = "";
-      // let symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!№;%:?*()_+=";
       let symbols =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       for (let i = 0; i < 10; i++) {

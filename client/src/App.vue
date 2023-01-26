@@ -20,9 +20,6 @@ export default {
 
     //проверка авторизации пользователя при входе на сайт
     onBeforeMount(async () => {
-      // console.log("App.vue || Проверяем авторизацию");
-      // console.log("route:: ", route);
-
       loading.value = true;
 
       //если есть Токен в localstorage
@@ -34,9 +31,6 @@ export default {
 
         //проверка прав доступа
         if (userRole && route.meta.access) {
-          // console.log("userRole:", userRole);
-          // console.log("route:", route);
-          // console.log("route.meta.access:", route.meta._value.access);
           userRole.forEach((role) => {
             if (
               !route.meta.access.includes(role) &&

@@ -34,7 +34,7 @@
 
         <q-route-tab @click="logout" label="Выход" />
       </q-tabs>
-      <q-toolbar class="lt-md w-auto">
+      <q-toolbar v-if="auth" class="lt-md w-auto">
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
@@ -265,7 +265,6 @@ export default {
 
     return {
       logout: async () => {
-        // store.commit("company/clearUserCompany");
         await store.dispatch("auth/logout");
         router.push("/auth");
       },
@@ -285,7 +284,6 @@ export default {
       access,
       auth,
       changeTab,
-      // userCompany,
     };
   },
 };

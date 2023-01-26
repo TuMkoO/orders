@@ -31,13 +31,8 @@ export default {
 
     onBeforeMount(async () => {
       loading.value = true;
+
       await store.dispatch("system/load");
-
-      // const user = store.getters["auth/user"];
-
-      // if (user.company) {
-      //   await store.dispatch("company/loadUserCompany", user.company);
-      // }
 
       loading.value = false;
     });

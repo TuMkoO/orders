@@ -1,7 +1,4 @@
-import axios from "axios";
-import store from "../index";
 import $api from "../../axios/request";
-import router from "../../router";
 
 export default {
   namespaced: true,
@@ -23,7 +20,6 @@ export default {
   actions: {
     async create({ commit, dispatch }, payload) {
       try {
-        // console.log("payload: ", payload);
         const { data } = await $api.post("api/listeners/create", payload);
 
         dispatch(
@@ -90,7 +86,6 @@ export default {
       try {
         const { data } = await $api.get(`/api/listeners/owner/${id}`);
 
-        // return data;
         commit("setListeners", data);
       } catch (e) {
         dispatch(
@@ -112,10 +107,7 @@ export default {
         // данные для передачи в БД на сервере
         const dataload = payload.values;
 
-        // console.log(payload.values);
-
         if (id) {
-          // console.log("certificate id", id);
           const data = await $api.put(`/api/listeners/${id}`, dataload);
 
           dispatch(

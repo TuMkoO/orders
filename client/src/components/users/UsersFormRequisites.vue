@@ -78,8 +78,6 @@ export default {
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
-      // console.log("props.requisites: ", props.requisites);
-
       if (
         props.requisites.companyBank &&
         props.requisites.companyPayment &&

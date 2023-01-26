@@ -418,15 +418,11 @@ import * as yup from "yup";
 export default {
   props: {
     buttonTitle: { type: String, required: true },
-    // submitType: { type: String, required: true },
     listenerInfo: { type: Object, required: false },
   },
   emits: ["success"],
   setup(props, { emit }) {
     const store = useStore();
-
-    // const access = ref(false);
-    // const user = computed(() => store.getters["auth/user"]);
 
     const certificationSystemOptions = computed(() =>
       store.getters["settingsConfigurable/certificationSystems"].map((item) => {
@@ -446,20 +442,9 @@ export default {
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(async () => {
-      // console.log(user);
-      // console.log(companyOptionsData);
-
       ticked.value = [];
 
-      // if (user.value.roles?.length) {
-      //   user.value.roles.includes("admin") || user.value.roles.includes("god")
-      //     ? (access.value = true)
-      //     : (access.value = false);
-      // }
-
       if (props.listenerInfo) {
-        // console.log(props.listenerInfo);
-
         if (
           props.listenerInfo.pkDate &&
           props.listenerInfo.pkExpirationDate &&
@@ -677,10 +662,6 @@ export default {
     }
 
     function onInvalidSubmit({ values, errors, results }) {
-      // console.log(values); // current form values
-      // console.log(errors); // a map of field names and their first error message
-      //console.log(results); // a detailed map of field names and their validation results
-
       if (
         typeInfo.value == "pk" &&
         values.pkUniversity &&
@@ -831,10 +812,8 @@ export default {
     const onSubmit = handleSubmit((values) => {}, onInvalidSubmit);
 
     return {
-      // access,
       onSubmit,
       changeInfoType,
-      // resetForm,
 
       expandedMethodNkDate,
       expandedTypeRiDate,

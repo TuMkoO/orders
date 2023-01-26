@@ -186,7 +186,6 @@ class UserService {
 
   async updateUserPassword(id, newPassword) {
     const hashNewPassword = await bcrypt.hash(newPassword, 3);
-    // console.log("updatePassword/ hashNewPassword", hashNewPassword);
 
     await User.findByIdAndUpdate(
       id,
@@ -249,15 +248,12 @@ class UserService {
   }
 
   async getUserById(id) {
-    // console.log("user-service/getUserById id :::", id);
     const user = await User.findById({ _id: id });
     return user;
   }
 
   async getUserCurrent(refreshToken) {
-    // console.log("user-service/getUserCurrent refreshToken: ", refreshToken);
     const user = await Token.findOne({ refreshToken });
-    // console.log("user-service/getUserCurrent user: ", user);
 
     return user;
   }

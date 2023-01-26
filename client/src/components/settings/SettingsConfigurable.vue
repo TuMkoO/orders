@@ -48,9 +48,7 @@ import * as yup from "yup";
 export default {
   props: {
     storeLink: { type: String, required: true },
-    // errorText: { type: String, required: true },
     storeName: { type: String, required: true },
-    // itemsList: { type: Array, required: true },
   },
   setup(props) {
     //подключаем store
@@ -106,13 +104,10 @@ export default {
   overflow-y: auto;
   &-wrapper {
     position: relative;
-    // border: 1px solid rgba(0, 0, 0, 0.24);
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14),
       0 3px 1px -2px rgba(0, 0, 0, 0.12);
-    // box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%),
-    //   0 3px 1px -2px rgb(0 0 0 / 12%);
   }
 }
 </style>

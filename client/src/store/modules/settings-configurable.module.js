@@ -1,6 +1,4 @@
-import axios from "../../axios/request";
 import $api from "../../axios/request";
-import store from "../index";
 
 export default {
   namespaced: true,
@@ -123,7 +121,6 @@ export default {
 
         // id для удаления
         const id = payload.id;
-        // console.log("id === ", id);
 
         if (id) {
           const data = await $api.delete(`/api/${link}/${id}`);

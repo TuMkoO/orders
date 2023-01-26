@@ -592,12 +592,6 @@ export default {
     const newPassword = ref("");
     const newPasswordInput = ref(null);
 
-    // const companyBank = ref("");
-    // const companyPayment = ref("");
-    // const companyInn = ref("");
-    // const companyOkpo = ref("");
-    // const companyBik = ref("");
-
     const secondDialogRef = ref(null);
     const thirdDialogRef = ref(null);
 
@@ -610,7 +604,6 @@ export default {
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
-      // console.log(route);
       role.value = "user";
 
       if (currentUser.value) {
@@ -621,15 +614,12 @@ export default {
       }
 
       if (props.user) {
-        // console.log(props.user);
-
         email.value = props.user.email;
         role.value = props.user.roles[0];
         firstName.value = props.user.firstName;
         secondName.value = props.user.secondName;
         lastName.value = props.user.lastName;
         post.value = props.user.post;
-        // phone.value = props.user.phone;
         phoneInput.value = props.user.phone;
         companyFullName.value = props.user.companyFullName;
         companyShortName.value = props.user.companyShortName;
@@ -648,7 +638,6 @@ export default {
         companyMailAddressStreet.value = props.user.companyMailAddressStreet;
         companyMailAddressHouse.value = props.user.companyMailAddressHouse;
         companyMailAddressRoom.value = props.user.companyMailAddressRoom;
-        // companyPhone.value = props.user.companyPhone;
         companyPhoneInput.value = props.user.companyPhone;
         companyEmail.value = props.user.companyEmail;
         companyBank.value = props.user.companyBank;
@@ -700,12 +689,6 @@ export default {
       //   value: "god",
       // },
     ];
-
-    // const { value: company, errorMessage: companyError } = useField(
-    //   "company",
-    //   yup.object().nullable()
-    //   // .required("Пожалуйста, укажите название предприятия")
-    // );
 
     const { value: email, errorMessage: eError } = useField(
       "email",
@@ -1057,10 +1040,6 @@ export default {
 
     //Обработка ошибок формы при регистрации
     async function onInvalidSubmit({ values, errors, results }) {
-      //console.log(values); // current form values
-      //console.log(errors); // a map of field names and their first error message
-      //console.log(results); // a detailed map of field names and their validation results
-
       try {
         if (
           props.submitType == "register" &&
@@ -1128,10 +1107,6 @@ export default {
             currentUser.value.id == props.user.id ||
             currentUser.value.id == props.user._id
           ) {
-            // console.log("currentUser.value.id", currentUser.value.id);
-            // console.log("props.user.id", props.user.id);
-            // console.log("props.user._id", props.user._id);
-
             //Обновление личного профиля
             await store.dispatch("auth/update", {
               ...values,
@@ -1199,10 +1174,7 @@ export default {
 
       if (newPasswordInput.value.hasError) {
         // form has error
-        // console.log("error");
       } else {
-        // console.log("success");
-
         try {
           await store.dispatch("auth/updateUserPassword", {
             id: props.user._id,
@@ -1220,8 +1192,6 @@ export default {
       }
     };
     const updateRequisites = (values) => {
-      // console.log(values);
-
       companyBank.value = values.companyBank;
       companyPayment.value = values.companyPayment;
       companyInn.value = values.companyInn;
@@ -1245,7 +1215,6 @@ export default {
       currentUserRequisites,
       access,
       lockedProfile,
-      // currentUserId,
 
       phoneInput,
       companyPhoneInput,
@@ -1337,8 +1306,6 @@ export default {
       cDirPostError,
       cGroundsError,
 
-      // newPassError,
-      // filterFn,
       onSubmit,
       onSubmitPassword,
       generatePassword,

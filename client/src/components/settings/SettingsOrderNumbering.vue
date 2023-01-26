@@ -55,12 +55,10 @@ export default {
     const { value: num, errorMessage: nError } = useField(
       "num",
       yup
-        // .string()
         .number("Введите число")
         .required(
           "Пожалуйста, введите номер заявки, с коротого необходимо будет продолжить нумерацию"
         )
-        // .matches(/[0-9]/g, "Только цифры")
         .min(0, "Число должно быть больше 0")
         .integer("Число должно быть целым")
     );

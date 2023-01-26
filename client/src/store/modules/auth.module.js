@@ -52,8 +52,6 @@ export default {
           { withCredentials: true }
         );
 
-        // console.log("auth.module/login() data:: ", data);
-
         if (data.accessToken) {
           localStorage.setItem("token", data.accessToken);
           commit("setToken", data.accessToken);
@@ -64,11 +62,8 @@ export default {
           });
         }
       } catch (e) {
-        console.log("e ===", e);
         let error = null;
-        // if (e == "Error: Request failed with status code 400") {
-        //   error = "Введены неверные логин или пароль";
-        // }
+
         if (e.response.status == 400) {
           error = "Введены неверные логин или пароль";
         }
@@ -111,8 +106,6 @@ export default {
 
     async register({ commit, dispatch }, payload) {
       try {
-        // console.log(payload);
-
         const { data } = await $api.post(
           "api/auth/register",
           {
@@ -151,12 +144,10 @@ export default {
           withCredentials: true,
         });
 
-        //console.log("loadUsers: ", data); // current user id  ==> data.user
         commit(
           "setUsers",
           data.filter((item) => !item.roles.includes("god"))
         );
-        // return data;
       } catch (e) {
         dispatch(
           "setMessage",
@@ -176,7 +167,6 @@ export default {
         const { data } = await $api.get("api/auth/user", {
           withCredentials: true,
         });
-        // console.log("loadCurrentUserId user: ", data); // current user id  ==> data.user
 
         if (data) {
           return data.user;
@@ -220,19 +210,6 @@ export default {
 
     async update({ commit, dispatch }, payload) {
       try {
-        // console.log(payload);
-        // const id = store.getters["auth/user"].id;
-
-        // const dataload = {
-        //   id: userId,
-        //   email: payload.email,
-        //   name: payload.name,
-        //   role: payload.role,
-        //   company: payload.company || companyId || "",
-        // };
-
-        // console.log(dataload);
-
         const { data } = await $api.post(
           "api/auth/update",
           {
@@ -269,7 +246,6 @@ export default {
 
     async updateById({ commit, dispatch }, payload) {
       try {
-        // console.log("payload: ", payload);
         const { data } = await $api.post(
           "/api/auth/update",
           {
@@ -318,8 +294,6 @@ export default {
           { withCredentials: true }
         );
 
-        // console.log("UPDATE PASSWORD ", data);
-
         dispatch(
           "setMessage",
           {
@@ -329,7 +303,6 @@ export default {
           { root: true }
         );
       } catch (e) {
-        // console.log(e);
         dispatch(
           "setMessage",
           {
@@ -345,11 +318,6 @@ export default {
 
     async updateUserPassword({ dispatch }, payload) {
       try {
-        // const dataload = {
-        //   id: payload.userId,
-        //   newPassword: payload.newPassword,
-        // };
-
         const { data } = await $api.post(
           "api/auth/update-user-password",
           payload,
@@ -357,8 +325,6 @@ export default {
             withCredentials: true,
           }
         );
-
-        // console.log("UPDATE PASSWORD ", data);
 
         dispatch(
           "setMessage",
@@ -369,7 +335,6 @@ export default {
           { root: true }
         );
       } catch (e) {
-        // console.log(e);
         dispatch(
           "setMessage",
           {
@@ -396,7 +361,6 @@ export default {
           { root: true }
         );
       } catch (e) {
-        // console.log(e.message);
         if (e.message == "Request failed with status code 400") {
           dispatch(
             "setMessage",
@@ -422,11 +386,7 @@ export default {
 
     //для проверки при входе на сайт, вызывается один раз
     async checkAuth({ commit }) {
-      // console.log("auth.module/checkAuth()");
       try {
-        // axios.defaults.baseURL = process.env.VUE_APP_DB_URL;
-        // axios.defaults.baseURL = process.env.VUE_APP_DB_URL_HOSTING;
-
         process.env.NODE_ENV === "production"
           ? (axios.defaults.baseURL = process.env.VUE_APP_DB_URL_HOSTING)
           : (axios.defaults.baseURL = process.env.VUE_APP_DB_URL);
@@ -439,15 +399,11 @@ export default {
           //добавляем в localStorage/token accessToken
           localStorage.setItem("token", data.accessToken);
 
-          // console.log("checkAuth==", data.user);
-
           commit("setIsAuth");
           commit("setToken", data.accessToken);
           commit("setUser", data.user);
         }
       } catch (e) {
-        // console.log("auth.module/checkAuth e", e);
-
         //необходимо очистить isAuth в store
         commit("clearIsAuth");
 

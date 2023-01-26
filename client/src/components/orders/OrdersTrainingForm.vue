@@ -104,13 +104,6 @@
           </q-select>
         </div>
 
-        <!-- <div class="col-12">
-          <div class="text-secondary">
-            Предприятие:
-            {{ usersSelect?.description }}
-          </div>
-        </div> -->
-
         <div class="col-12">
           <q-input
             v-if="
@@ -182,18 +175,6 @@
             </template>
           </q-select>
         </div>
-        <!-- <div v-if="listenersSelect" class="col-12">
-          <div class="text-secondary">
-            {{
-              "Пол: " +
-              "gender" +
-              ", Дата рождения: " +
-              //dateFormat(birthday) +
-              ", Телефон: " +
-              "phone"
-            }}
-          </div>
-        </div> -->
 
         <div class="col-12">
           <q-input
@@ -468,7 +449,6 @@ export default {
     const listenerChangeCount = ref(0);
 
     onMounted(async () => {
-      // console.log(usersSelectOptionsData);
       loading.value = true;
 
       if (user.roles.length) {
@@ -482,8 +462,6 @@ export default {
       }
 
       if (props.orderData) {
-        // console.log(props.orderData);
-
         if (access.value) {
           usersSelect.value = usersSelectOptionsData.value
             .map((item) => item)
@@ -553,8 +531,6 @@ export default {
       if (props.orderData) listenerChangeCount.value += 1;
 
       if (newVal !== oldVal) {
-        // listener.value = null;
-
         if (listenerChangeCount.value == 1 && props.orderData) {
           listenersSelect.value = listenerOptionsData.value
             .map((item) => item)
@@ -664,7 +640,6 @@ export default {
     const updateListeners = async (values) => {
       if (user.roles) {
         if (user.roles.includes("admin") || user.roles.includes("god")) {
-          // await store.dispatch("listener/load");
           if (usersSelect.value) {
             await store.dispatch(
               "listener/loadByCompany",
@@ -700,7 +675,6 @@ export default {
     };
 
     const updateUsers = async (values) => {
-      // console.log("values:", values);
       await store.dispatch("auth/loadUsers");
 
       closeModal();
@@ -811,10 +785,6 @@ export default {
             });
           }
 
-          // const numbering =
-          //   store.getters["orderTrainingNumbering/ordersNumbering"][0];
-
-          // value.number = numbering.prefix + numbering.num;
           value.date = new Date();
 
           await store.dispatch("orderTraining/update", { value, id });

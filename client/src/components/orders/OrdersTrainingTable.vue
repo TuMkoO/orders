@@ -87,10 +87,6 @@
 
         <template v-slot:body-selection="scope">
           <q-checkbox v-model="scope.selected" />
-          <!-- <q-checkbox
-            :disable="scope.row.status !== 'Черновик'"
-            v-model="scope.selected"
-          /> -->
         </template>
         <template v-slot:body-cell-date="props">
           <q-td :props="props">
@@ -507,8 +503,6 @@ export default {
     }
 
     async function remove(items) {
-      // console.log(items);
-
       closeModal();
 
       for (const item of items) {
@@ -526,7 +520,6 @@ export default {
         descending: true,
         page: 1,
         rowsPerPage: 10,
-        // rowsNumber: xx if getting data from a server
       },
 
       user,

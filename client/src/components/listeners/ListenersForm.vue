@@ -1888,18 +1888,11 @@ export default {
 
     const phoneInput = ref(null);
 
-    // const educationOptions = [
-    //   "Высшее",
-    //   "Среднее профессиональное",
-    //   "Среднее общее",
-    // ];
     const genderOptions = ["Мужской", "Женский"];
     const statusOptions = [
       "Работает на предприятии",
       "Не работает на предприятии",
     ];
-
-    // const ownerUserOptions = computed(() => []);
 
     const companies = ref(null);
 
@@ -1931,7 +1924,6 @@ export default {
     const attNkInfo = ref([]);
     const attRiInfo = ref([]);
 
-    // const typeInfo = ref("pk");
     const certTypeInfo = ref("pk");
 
     const columnsPk = [
@@ -2122,10 +2114,6 @@ export default {
     const { handleSubmit } = useForm();
 
     onMounted(async () => {
-      // console.log(props.listener);
-      // console.log(user);
-      // console.log(companyOptionsData);
-
       if (user.value.roles?.length) {
         user.value.roles.includes("admin") || user.value.roles.includes("god")
           ? (access.value = true)
@@ -2185,7 +2173,6 @@ export default {
         street.value = props.listener.street;
         homeNumber.value = props.listener.homeNumber;
         apartment.value = props.listener.apartment;
-        // phone.value = props.listener.phone;
         phoneInput.value = props.listener.phone;
         email.value = props.listener.email;
         education.value = props.listener.education;
@@ -2827,9 +2814,6 @@ export default {
 
     //показ модального окна с формами редактирования/удаления сведений о сертификации
     async function showModalListenerInfo(action, listenerInfo) {
-      // console.log(action);
-      // console.log(listenerInfo);
-
       if (action == "delete") {
         currentListenerInfo.value = listenerInfo;
 
@@ -2940,8 +2924,6 @@ export default {
     }
 
     const onSubmit = handleSubmit(async (values) => {
-      // console.log(values);
-
       //Подсчет количества дней в году
       let year = new Date().getFullYear();
       let yearDays = 0;
@@ -2994,13 +2976,9 @@ export default {
           });
         }
       } catch (e) {
-        // console.log(e);
+        console.log(e);
       }
     });
-
-    // async function onInvalidSubmit({ values, errors, results }) {
-    //   console.log(errors);
-    // }
 
     return {
       dateFormatTypeInput,
@@ -3018,7 +2996,6 @@ export default {
       showModalListenerInfo,
       deleteListenerInfo,
       access,
-      // educationOptions,
       genderOptions,
       statusOptions,
       companyOptions,
@@ -3065,7 +3042,6 @@ export default {
       diplomSeries,
       diplomNumber,
       diplomDate,
-      // companyError,
       statusError,
       oUserError,
       numNkError,
@@ -3175,7 +3151,6 @@ export default {
       methodNkDateGroup,
       typeRiDateGroup,
       weldingMethodDateGroup,
-      // typeInfo,
       certTypeInfo,
 
       certificationSystemOptions,
@@ -3324,21 +3299,18 @@ export default {
         descending: false,
         page: 1,
         rowsPerPage: 10,
-        // rowsNumber: xx if getting data from a server
       },
       initialPaginationNk: {
         sortBy: "nkDate",
         descending: false,
         page: 1,
         rowsPerPage: 10,
-        // rowsNumber: xx if getting data from a server
       },
       initialPaginationRi: {
         sortBy: "riDate",
         descending: false,
         page: 1,
         rowsPerPage: 10,
-        // rowsNumber: xx if getting data from a server
       },
     };
   },

@@ -1,5 +1,4 @@
 import axios from "../../axios/request";
-// import $api from "../../axios/request";
 import store from "../index";
 
 export default {
@@ -61,7 +60,6 @@ export default {
       try {
         const headers = {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${token}`,
         };
 
         //загрузка с БД сервера
@@ -72,7 +70,6 @@ export default {
         //вызываем mutation
         commit("setSystems", data[0]);
       } catch (e) {
-        // console.log(e);
         dispatch(
           "setMessage",
           {
@@ -121,20 +118,15 @@ export default {
         // данные для передачи в БД на сервере
         const dataload = payload.values;
 
-        // console.log(payload);
-
         const headers = {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
 
         if (id) {
-          // console.log("certificate id", id);
           const { data } = await axios.put(`api/system/${id}`, dataload, {
             headers: headers,
           });
-
-          // console.log("system/module update data::: ", data.systemData);
 
           commit("setSystems", data.systemData);
 
@@ -167,40 +159,6 @@ export default {
         );
       }
     },
-
-    /*async remove({ commit, dispatch }, id) {
-      try {
-        //получаем токен из store
-        const token = store.getters["auth/token"];
-
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
-
-        const { data } = await axios.delete(`api/certificate/${id}`, {
-          headers: headers,
-        });
-
-        dispatch(
-          "setMessage",
-          {
-            value: "Протокол успешно удален",
-            type: "primary",
-          },
-          { root: true }
-        );
-      } catch (e) {
-        dispatch(
-          "setMessage",
-          {
-            value: e.message,
-            type: "danger",
-          },
-          { root: true }
-        );
-      }
-    },*/
   },
   getters: {
     systems(state) {

@@ -1,6 +1,5 @@
 //Data Transfer Object
 export function dtoListener(listener) {
-  // console.log("dtoListener.js==", listener);
   return {
     id: listener._id,
     status: listener.status,

@@ -94,7 +94,6 @@ export default {
     const { handleSubmit, resetForm } = useForm();
 
     onMounted(() => {
-      // console.log(props.passport);
       if (
         props.passport?.passportSeries &&
         props.passport?.passportNumber &&
@@ -143,15 +142,6 @@ export default {
     );
 
     const onSubmit = handleSubmit(async (values) => {
-      // console.log(values);
-
-      // const requisites = await store.dispatch("auth/updateRequisites", {
-      //   ...values,
-      //   id: props.requisites.id,
-      // });
-
-      // resetForm();
-
       emit("success", values);
     });
 

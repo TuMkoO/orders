@@ -1,7 +1,4 @@
-import axios from "axios";
-import store from "../index";
 import $api from "../../axios/request";
-import router from "../../router";
 
 export default {
   namespaced: true,
@@ -89,7 +86,6 @@ export default {
       try {
         const { data } = await $api.get(`/api/order-training/company/${id}`);
 
-        // return data;
         commit("setOrders", data);
       } catch (e) {
         dispatch(
@@ -112,7 +108,6 @@ export default {
         const dataload = payload.value;
 
         if (id) {
-          // console.log("certificate id", id);
           const data = await $api.put(`/api/order-training/${id}`, dataload);
 
           dispatch(

@@ -23,8 +23,6 @@ class UserController {
         phone,
       } = req.body;
 
-      // console.log("req.body===", req.body);
-
       const userData = await userService.registration(
         email,
         password,
@@ -56,15 +54,12 @@ class UserController {
       });
       return res.json(userData);
     } catch (e) {
-      // next(e);
-      console.log(e);
-      return res.json(e);
+      next(e);
     }
   }
 
   async update(req, res) {
     try {
-      // console.log("req.body :::= ", req.body);
       const {
         id,
         email,
@@ -143,22 +138,20 @@ class UserController {
 
       return res.json(userData);
     } catch (e) {
-      // console.log("e===", e);
       next(e);
     }
   }
 
   async updatePassword(req, res) {
     try {
-      // console.log("req.body :::= ", req.body);
       const { id, oldPassword, newPassword } = req.body;
-      // console.log("updatePassword req.body::: ", req.body);
+
       const userData = await userService.updatePassword(
         id,
         oldPassword,
         newPassword
       );
-      // return res.json(userData);
+
       return res.status(201).json({ message: "Пароль успешно изменён" });
     } catch (e) {
       next(e);
@@ -246,12 +239,8 @@ class UserController {
 
   async getUserById(req, res, next) {
     try {
-      // console.log("req+++ ", req);
-      // console.log("req.body+++ ", req.body);
-      // console.log("req.params.id+++ ", req.params.id);
-
       const id = req.params.id;
-      // console.log("id+++ ", id);
+
       const user = await userService.getUserById(id);
       return res.json(user);
     } catch (e) {

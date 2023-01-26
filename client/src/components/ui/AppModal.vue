@@ -1,5 +1,4 @@
 <template>
-  <!-- <q-btn label="Confirm" color="primary" @click="confirm = true" /> -->
   <q-dialog v-model="confirm" persistent :full-width="fullSize">
     <q-card>
       <q-toolbar>

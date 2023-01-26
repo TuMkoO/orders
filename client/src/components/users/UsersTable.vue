@@ -23,34 +23,7 @@
             </q-th>
           </q-tr>
         </template>
-        <!-- <template v-slot:body-cell-roles="props">
-          <q-td :props="props">
-            <div v-if="props.value.includes('user')">
-              <q-badge
-                v-for="(val, idx) in props.value"
-                :key="idx"
-                color="blue"
-                :label="'Пользователь'"
-              />
-            </div>
-            <div v-if="props.value.includes('admin')">
-              <q-badge
-                v-for="(val, idx) in props.value"
-                :key="idx"
-                color="red"
-                :label="'Администратор'"
-              />
-            </div>
-            <div v-if="props.value.includes('god')">
-              <q-badge
-                v-for="(val, idx) in props.value"
-                :key="idx"
-                color="orange"
-                :label="'God'"
-              />
-            </div>
-          </q-td>
-        </template> -->
+
         <template v-slot:body-cell-companyFullName="props">
           <q-td :props="props">
             <div style="max-width: 250px; white-space: normal">
@@ -198,12 +171,6 @@ const columns = [
     format: (val) => `${val}`,
     sortable: true,
   },
-  // {
-  //   name: "roles",
-  //   align: "center",
-  //   label: "Права доступа",
-  //   field: "roles",
-  // },
   {
     name: "control",
     align: "center",
@@ -290,7 +257,6 @@ export default {
         descending: false,
         page: 1,
         rowsPerPage: 10,
-        // rowsNumber: xx if getting data from a server
       },
 
       columns,
